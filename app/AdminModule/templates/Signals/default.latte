@@ -45,7 +45,8 @@
                 <thead>
                 <tr>
                     <th>Název</th>
-                    <th>Last update</th>
+                    <th>Aktivní</th>
+                    <th>Poslední úprava</th>
                     <th n:if="$user->isAllowed('Admin:Signals', 'update')"></th>
                     <th n:if="$user->isAllowed('Admin:Signals', 'delete')"></th>
                 </tr>
@@ -54,6 +55,11 @@
                 {foreach $signals as $item}
                     <tr>
                         <td><a n:href="view $item->id">{$item->name}</a></td>
+                        <td class="manage-icons text-center">
+                            {if $item->public}
+                                <i class="foundicon-checkmark"></i>
+                            {/if}
+                        </td>
                         <td class="column-grey">{$item->updated|date:"d.m.Y"}</td>
                         <td class="manage-icons" n:if="$user->isAllowed('Admin:Signals', 'update')">
                             <a n:href="view $item->id">
