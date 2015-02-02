@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation project</title>
+    <link rel="stylesheet" href="{$baseUrl}/css/libraries.min.css"/>
+    <link rel="stylesheet" href="{$baseUrl}/css/app.min.css"/>
+    <script src="{$baseUrl}/js/vendor/modernizr.min.js"></script>
+</head>
+<body>
+
+<header>
+    <div class="row">
+        <div class="small-12 medium-4 large-4 columns">
+            <a href="#">
+                <img src="{$baseUrl}/images/logo.png" alt="Logo Horizont 2050">
+            </a>
+        </div>
+
+        {control topMenu}
+
+    </div>
+</header>
+
+<div class="row">
+    <div class="small-12 medium-12 large-12 columns">
+        <div class="divider"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="small-12 medium-3 large-3 columns" id="left-bar">
+        <nav class="left-menu-text">
+
+            {foreach $left_menu as $item}
+            <div class="menu-item {if isset($page->id) && $item->id == $page->id}active{/if}">
+                <div class="menu-image"></div>
+                <a n:href="Display:default $item->id">
+                   {$item->menutitle}
+                </a>
+            </div>
+            {/foreach}
+
+        </nav>
+    </div>
+
+    {include #content}
+
+
+    <script src="{$baseUrl}/js/vendor/libraries.min.js"></script>
+    <script src="{$baseUrl}/js/vendor/foundation.min.js"></script>
+    <script src="{$baseUrl}/js/app.min.js"></script>
+</body>
+</html>

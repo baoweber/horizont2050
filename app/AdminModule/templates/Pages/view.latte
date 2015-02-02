@@ -1,0 +1,159 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Správa signálu</h1>
+        </div>
+    </div>
+
+    <div class="row content">
+        <div class="large-8 columns table-display">
+
+            <div class="row">
+                <div class="large-3 columns heading">
+                    Název:
+                </div>
+                <div class="large-9 columns">
+                    {$signal->name}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-3 columns heading">
+                    Titulek:
+                </div>
+                <div class="large-9 columns">
+                    {$signal->title}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-3 columns heading">
+                    Tematické oblasti:
+                </div>
+                <div class="large-9 columns">
+                    {$spaces[$signal->spaces_id]}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-3 columns heading">
+                    Typ události:
+                </div>
+                <div class="large-9 columns">
+                    {$event_types[$signal->event_types_id]}
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 2em;">
+                <div class="large-12 columns">
+                    {!$signal->description}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-3 columns heading">
+                    Klasifikace:
+                </div>
+                <div class="large-9 columns">
+                    {$impacts[$signal->impacts_id]}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-3 columns heading">
+                    Rozsah:
+                </div>
+                <div class="large-9 columns">
+                    {$scales[$signal->scales_id]}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="large-3 columns heading">
+                    Časový horizont:
+                </div>
+                <div class="large-9 columns">
+                    {$signal->timeframe}
+                </div>
+            </div>
+
+            <h3>Relevance</h3>
+
+            <div class="sources" n:if="isset($challenges) && is_array($challenges)" style="margin-bottom: 1.5em;">
+                <div n:foreach="$challenges as $challenge">
+
+                    {$challenge->name}
+
+                    <a n:href="removeChallenge $signal->id, $challenge->challenges_id">x</a>
+                </div>
+            </div>
+
+            {control challengesForm}
+
+            <h3>Souvislost s národními strategickými dokumenty</h3>
+
+
+            <div class="sources" n:if="isset($strategies) && is_array($strategies)" style="margin-bottom: 1.5em;">
+                <div n:foreach="$strategies as $strategy">
+
+                   {if $strategy->url}
+                        <a href="{$strategy->url}" target="_blank">{$strategy->name}</a>
+                    {else}
+                        {$strategy->name}
+                    {/if}
+
+                    <a n:href="removeStrategy $signal->id, $strategy->strategies_id">x</a>
+                </div>
+            </div>
+
+            {control strategiesForm}
+
+            <h3>Zdroje</h3>
+
+            <div class="sources" n:if="isset($sources) && is_array($sources)" style="margin-bottom: 1.5em;">
+                <div n:foreach="$sources as $source">
+                    {var $i = $iterator->getCounter()}
+                    [{$i}]
+                    {if $source->url}
+                        <a href="{$source->url}" target="_blank">{$source->name}</a>
+                    {else}
+                        {$source->name}
+                    {/if}
+
+                    <a n:href="removeSource $signal->id, $source->id">x</a>
+                </div>
+            </div>
+
+
+            {control sourcesForm}
+
+        </div>
+
+        <div class="large-4 columns">
+            <h3>Klíčová slova</h3>
+
+            <div n:foreach="$assignedKeywords as $key => $item" >
+                <span class="label secondary" style="padding: 0.4em; margin-bottom: 0.4em">{$item->label} &nbsp;&nbsp;<a n:href="removeKeyword $signal->id, $item->keywords_id"><i class="foundicon-remove"></i></a></span>
+            </div>
+
+            <br>
+
+            {control keywordsForm}
+
+        </div>
+
+    </div>
+
+{/block}
+
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}

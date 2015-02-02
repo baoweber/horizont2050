@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="">
+
+    <meta name="robots" content="{$robots}" n:ifset="$robots">
+
+    <title>{block title|striptags|upper}Nette Application Skeleton{/block}</title>
+
+    <title>Foundation 4</title>
+
+    <link rel="stylesheet" href="{$basePath}/css/normalize.css">
+    <link rel="stylesheet" href="{$basePath}/css/foundation.css">
+    <link rel="stylesheet" href="{$basePath}/css/general_foundicons.css">
+    <link rel="stylesheet" href="{$basePath}/css/style.css">
+
+
+    <script src="{$basePath}/js/vendor/custom.modernizr.js"></script>
+
+    {block head}{/block}
+</head>
+<body>
+<script> document.documentElement.className += ' js' </script>
+
+<div class="row row-top-bar">
+    <div class="large-12 columns">
+        <nav class="top-bar">
+            <section class="top-bar-section">
+                <ul class="left">
+                    <li>
+                        <a href="#">
+                            Vítejte v administraci MESENFOR
+                        </a>
+                    </li>
+                </ul>
+                <ul class="right">
+
+                </ul>
+            </section>
+        </nav>
+    </div>
+</div>
+
+{include #content}
+
+<div class="row row-footer">
+    <div class="large-12 columns">
+        <hr>
+        &copy; Created by Baoweb 2013 - {date('Y')}
+    </div>
+</div>
+
+
+{block scripts}
+    <script src="{$basePath}/js/vendor/jquery.js"></script>
+    <script src="{$basePath}/js/netteForms.js"></script>
+    <script src="{$basePath}/js/main.js"></script>
+    <script src="{$basePath}/js/foundation.min.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+{/block}
+
+
+</body>
+</html>

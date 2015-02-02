@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="">
+
+    <meta name="robots" content="{$robots}" n:ifset="$robots">
+
+    <title>{block title|striptags|upper}Mesenfor administration{/block}</title>
+
+    <link rel="stylesheet" href="{$basePath}/css/normalize.css">
+    <link rel="stylesheet" href="{$basePath}/css/foundation.css">
+    <link rel="stylesheet" href="{$basePath}/css/general_foundicons.css">
+    <link rel="stylesheet" href="{$basePath}/css/style.css">
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css"
+          type="text/css" media="all"/>
+
+    <script src="{$basePath}/js/vendor/custom.modernizr.js"></script>
+
+    <script src="{$basePath}/js/tinymce/tinymce.min.js"></script>
+
+    <script>
+        tinymce.init({
+            selector: "textarea"
+            ,plugins: "link image"
+            ,file_browser_callback: RoxyFileBrowser
+            ,menubar:false
+            ,statusbar: false
+            ,theme: "modern"
+        });
+
+        function RoxyFileBrowser(field_name, url, type, win) {
+            var roxyFileman = '{!$baseUrl}/js/tinymce/plugins/fileman/index.html';
+            if (roxyFileman.indexOf("?") < 0) {
+                roxyFileman += "?type=" + type;
+            }
+            else {
+                roxyFileman += "&type=" + type;
+            }
+            roxyFileman += '&input=' + field_name + '&value=' + document.getElementById(field_name).value;
+            tinyMCE.activeEditor.windowManager.open({
+                file: roxyFileman,
+                title: 'Roxy Fileman',
+                width: 850,
+                height: 650,
+                resizable: "yes",
+                plugins: "media",
+                inline: "yes",
+                close_previous: "no"
+            }, {     window: win,     input: field_name    });
+            return false;
+        }
+
+    </script>
+
+    {block head}{/block}
+</head>
+<body>
+<script> document.documentElement.className += ' js' </script>
+
+<div class="row row-top-bar">
+    <div class="large-12 columns">
+        {control topMenu}
+    </div>
+</div>
+
+{include #content}
+
+<div class="row row-footer">
+    <div class="large-12 columns">
+        <hr>
+        &copy; Created by COŽP 2014 - {date('Y')}
+    </div>
+</div>
+
+
+{block scripts}
+    <script src="{$basePath}/js/vendor/jquery.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script src="{$basePath}/js/netteForms.js"></script>
+    <script src="{$basePath}/js/main.js"></script>
+    <script src="{$basePath}/js/foundation.min.js"></script>
+    <script src="{$basePath}/js/alertisimmo.js"></script>
+
+    <script>
+        $(document).foundation(
+
+        );
+    </script>
+{/block}
+
+{block specificScripts}
+
+{/block}
+
+</body>
+</html>

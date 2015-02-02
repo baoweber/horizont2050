@@ -1,0 +1,29 @@
+{var $robots = noindex}
+
+{block #content}
+
+    <div class="row">
+        <div class="large-6 columns">
+            <h1 n:block=title>Přihlášení</h1>
+
+            {control signInForm}
+        </div>
+
+        <div class="large-6 columns">
+            <h1>Registrace</h1>
+
+        </div>
+    </div>
+
+
+{* or use {include '../components/form.latte', form => $presenter[signInForm]} *}
+
+{/block}
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}

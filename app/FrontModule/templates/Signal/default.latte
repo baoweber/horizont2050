@@ -1,0 +1,113 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+    <div class="small-12 medium-9 large-9 columns main-detail" id="main">
+
+        <article class="row database-item" >
+            <div class="large-3 columns" class="cover-image">
+                {if isset($signal->image) && $signal->image}{!$signal->image|thumber:200:200:crop}{/if}
+            </div>
+            <div class="large-9 columns">
+
+                <h1>
+                    <i class="h1-arrow">
+                        <img src="{$baseUrl}/images/arrow-down.png" alt="arrow"/>
+                    </i>
+                    {$signal->name}
+                    </h2>
+
+                    <div class="divider"></div>
+
+
+                    {!$signal->perex}
+            </div>
+
+            <div class="corner"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
+            <div class="highlight"><span class="number">{$signal->relevance}</span><span class="percent">%</span></div>
+
+            <div class="large-12 columns">
+
+                <div class="divider"></div>
+
+                <table class="plain" width="100%">
+                    <tbody>
+                        <tr>
+                            <th>Titulek:</th>
+                            <td colspan="3">{$signal->title}</td>
+                        </tr>
+                        <tr>
+                            <th width="25%">Tematické oblasti:</th>
+                            <td width="25%">{$spaces[$signal->spaces_id]}</td>
+                            <th width="25%">Typ události:</th>
+                            <td width="25%">{$event_types[$signal->event_types_id]}</td>
+                        </tr>
+                        <tr>
+                            <th>Klasifikace:</th>
+                            <td>{$impacts[$signal->impacts_id]}</td>
+                            <th>Rozsah:</th>
+                            <td>{$scales[$signal->scales_id]}</td>
+                        </tr>
+                        <tr>
+                            <th>Časový horizont:</th>
+                            <td>{$signal->timeframe}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="divider"></div>
+
+                <div n:if="$signal->description">
+                    <h2>Popis jevu</h2>
+                    {!$signal->description}
+                </div>
+
+                <div n:if="$signal->drivers">
+                    <h2>Drives and inhibitors</h2>
+                    {!$signal->drivers}
+                </div>
+
+                <div n:if="$signal->impact">
+                    <h2>Dopady na společnost a ŽP</h2>
+                    {!$signal->impact}
+                </div>
+
+                <div n:if="$signal->drivers">
+                    <h2>Pravděpodobnost</h2>
+                    {!$signal->likelyhood}
+                </div>
+
+                <div n:if="$signal->impact">
+                    <h2>Doporučená opatření</h2>
+                    {!$signal->recomendations}
+                </div>
+
+                <div class="divider"></div>
+
+                <strong>Zdroje</strong>
+
+                <ul>
+                    <li n:foreach="$sources as $item">
+                        <a name="source{$item->id}"></a>
+                        [{$iterator->getCounter()}]
+                        <a n:tag-if="$item->url" href="{$item->url}">
+                            {$item->name}
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </article>
+
+    </div>
+
+{/block}
+
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}

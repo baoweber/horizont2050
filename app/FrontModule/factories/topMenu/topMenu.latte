@@ -1,0 +1,7 @@
+<div class="top-menu-item small-12 medium-1 large-1 right columns" n:foreach="$menuItems as $item">
+    <a href="{plink Display:default $item->slug}">
+        <div>
+            <div {if isset($item->displayAsActive) && $item->displayAsActive}class="active"{/if}>{$item->menutitle}</div>
+        </div>
+    </a>
+</div>

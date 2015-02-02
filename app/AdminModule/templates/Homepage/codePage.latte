@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Mastgroup - codepage</title>
+    <meta charset="utf-8" />
+    <style>
+        table td {
+            border: 1px lightgrey solid;
+        }
+    </style>
+</head>
+<body>
+
+<table cellpadding="4" cellspacing="0">
+    <thead>
+        <tr>
+            <th>CODE</th>
+            <th>ITEM</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr n:foreach="$items as $key => $item">
+            <td style="text-align: center;">{$key}</td>
+            <td>{$item}</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

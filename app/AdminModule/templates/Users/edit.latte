@@ -1,0 +1,42 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Upravit uživatele</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            {control userEditForm}
+        </div>
+    </div>
+
+{/block}
+
+
+{block head}
+<style>
+.tinyMCE {
+  height: 450px;
+}
+.perex {
+  height: 200px;
+}
+.text {
+  width: 400px;
+}
+</style>
+{/block}
+
+{block script}
+if($('input[name=slug]').val() == '') {
+  $('input[name=slug]').click(function(){
+    text = $('input[name=short_title]').val()
+    slug = slug(text)
+    $('input[name=slug]').val(slug)
+  })
+}
+{/block}

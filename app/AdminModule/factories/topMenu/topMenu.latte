@@ -1,0 +1,19 @@
+<nav class="top-bar">
+    <section class="top-bar-section">
+        <ul class="left">
+            <li n:foreach="$links as $link" class="{if isset($link['active'])}active{/if}">
+                <a href="{$link['link']}">
+                    {$link['text']}
+                </a>
+            </li>
+        </ul>
+        <ul class="right">
+            <li n:foreach="$linksRight as $link" class="{if isset($link['active'])}active{/if}">
+                <a href="{$link['link']}">
+                    {!$link['text']}
+                </a>
+            </li>
+        </ul>
+    </section>
+
+</nav>

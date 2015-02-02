@@ -1,0 +1,42 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+<div class="small-12 medium-9 large-9 columns main-database-list" id="main">
+
+    <article class="row database-item" n:foreach="$signals as $signal">
+        <div class="large-3 columns" class="cover-image">
+            {if $signal->image}{!$signal->image|thumber:200:200:crop}{/if}
+        </div>
+        <div class="large-9 columns">
+
+            <h2>
+                <i class="h2-arrow">
+                    <a n:href="Signal:default $signal->id"><img src="{$baseUrl}/images/h2-arrow.png" alt="arrow"/></a>
+                </i>
+                <a n:href="Signal:default $signal->id">{$signal->name}</a>
+            </h2>
+
+            <div class="divider"></div>
+
+            <p>
+                {!$signal->perex}
+            </p>
+
+        </div>
+
+        <div class="corner"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
+        <div class="highlight"><span class="number">{*{$signal->relevance}</span><span class="percent">%</span>*}</div>
+
+    </article>
+
+</div>
+{/block}
+
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}

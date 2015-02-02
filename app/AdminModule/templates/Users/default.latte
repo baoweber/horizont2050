@@ -1,0 +1,81 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Spr8va uživatelů</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div n:foreach="$flashes as $flash" class="label flash {$flash->type}">{$flash->message}</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <p>
+                <a n:href="insert" class="small button secondary">vytvořit nového uživatele</a>
+            </p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="large-12 columns">
+
+            <table n:if="$users">
+                <thead>
+                <tr>
+                    <th>Příjmení, Jméno</th>
+                    <th>email</th>
+                    <th>aktivní</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {foreach $users as $item}
+                    <tr>
+                        <td>{$item->surname}, {$item->name}</td>
+                        <td><a href="mailto:{$item->email}">{$item->email}</a></td>
+                        <td nowrap="true">
+                            {if $item->status}
+                                <a n:href="activate $item->id, 0" style="color: black;">
+                                    <i class="foundicon-checkmark" data-tooltip title="block user"></i>
+                                </a>
+                                {else}
+                                <a n:href="activate $item->id, 1" style="color: red;">
+                                    <i class="foundicon-error" data-tooltip title="unblock user"></i>
+                                </a>
+                            {/if}
+                        </td>
+                        <td nowrap="true">{$item->created|date:'%d.%m.%Y'}</td>
+                        <td style="text-align: right;" nowrap="true">
+                            <a n:href="edit $item->id">
+                                <i class="foundicon-edit tip-left" data-tooltip title="update user"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" class="confirm-delete">
+                                <i class="foundicon-remove tip-left" data-tooltip title="delete user"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+            <p n:if="!count($users)">Zatím nejsou vloženi žádní uživatelé.</p>
+
+        </div>
+    </div>
+
+{/block}
+
+
+{block head}
+
+{/block}

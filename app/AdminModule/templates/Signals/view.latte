@@ -1,0 +1,309 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+    <div class="row">
+    <div class="large-12 columns">
+        <h1>Správa signálu</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <dl class="tabs" data-tab>
+            <dd {if !$active || $active == 1}class="active"{/if}><a href="#panel1">Základní údaje</a></dd>
+            {*<dd {if !$active || $active == 2}class="active"{/if}><a href="#panel2">Relevance</a></dd>*}
+            <dd {if !$active || $active == 2}class="active"{/if}><a href="#panel2">Texty</a></dd>
+            <dd {if !$active || $active == 3}class="active"{/if}><a href="#panel3">Strat. dokumenty</a></dd>
+            <dd {if !$active || $active == 4}class="active"{/if}><a href="#panel4">Zdroje</a></dd>
+            <dd {if !$active || $active == 4}class="active"{/if}><a href="#panel5">Tematické oblasti</a></dd>
+        </dl>
+    </div>
+</div>
+
+<div class="tabs-content">
+
+    <div class="row content {if !$active || $active == 1}active{/if}" id="panel1">
+        <div class="large-8 columns">
+
+            {form signalForm}
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label name /}
+                        {input name}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label title /}
+                        {input title}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        {label categories_id /}
+                        {input categories_id}
+                    </div>
+                    <div class="large-6 medium-6 columns">
+                        {label spaces_id /}
+                        {input spaces_id}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        {label event_types_id /}
+                        {input event_types_id}
+                    </div>
+                    <div class="large-6 medium-6 columns">
+                        {label relevance /}
+                        {input relevance}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        {label impacts_id /}
+                        {input impacts_id}
+                    </div>
+                    <div class="large-6 medium-6 columns">
+                        {label scales_id /}
+                        {input scales_id}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label ptree /}
+                        {input ptree }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label timeframe /}
+                        {input timeframe }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label perex /}
+                        {input perex }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label user_create /}
+                        {input user_create }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        <span style="margin-right: 2em;">{input update_date }</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {input submit}
+                    </div>
+                </div>
+            {/form}
+        </div>
+
+        <div class="large-4 columns">
+            <h3></h3>
+
+            <div n:foreach="$assignedKeywords as $key => $item">
+                <span class="label secondary" style="padding: 0.4em; margin-bottom: 0.4em">{$item->label} &nbsp;&nbsp;<a
+                            n:href="removeKeyword $signal->id, $item->keywords_id"><i
+                                class="foundicon-remove"></i></a></span>
+            </div>
+
+            <br>
+
+            {control keywordsForm}
+
+            <div n:if="$imagePath">
+                <p>Stávající fotografie:</p>
+
+                {!$imagePath|thumber:200:200:crop}
+            </div>
+
+            <br><br>
+
+            <p>Nahrát fotografii:</p>
+
+            {control imageForm}
+
+
+        </div>
+
+    </div>
+
+    <div class="row content {if !$active || $active == 2}active{/if}" id="panel2">
+        <div class="large-8 columns">
+
+            <h3>Texty</h3>
+
+            {form textsForm}
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label description /}
+                        {input description}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label impact /}
+                        {input impact }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label likelyhood /}
+                        {input likelyhood }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label drivers /}
+                        {input drivers }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label recomendations /}
+                        {input recomendations }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {input submit}
+                    </div>
+                </div>
+            {/form}
+
+        </div>
+
+        <div class="large-4 columns">
+
+            <h3>Kódy zdrojů</h3>
+
+            <div class="sources" n:if="isset($strategies) && is_array($strategies)" style="margin-bottom: 1.5em;">
+                <div n:foreach="$sources as $source" style="font-size: 0.8em; margin-bottom: 0.5em;">
+                    {var $i = $iterator->getCounter()}
+                    ~~{$source->id}~~
+                    {if $source->url}
+                        <a href="{$source->url}" target="_blank">{$source->name}</a>
+                    {else}
+                        {$source->name}
+                    {/if}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row content {if !$active || $active == 3}active{/if}" id="panel3">
+        <div class="large-8 columns">
+
+            <h3>Souvislost s národními strategickými dokumenty</h3>
+
+            <div class="sources" n:if="isset($strategies) && is_array($strategies)" style="margin-bottom: 1.5em;">
+                <div n:foreach="$strategies as $strategy">
+
+                    {if $strategy->url}
+                        <a href="{$strategy->url}" target="_blank">{$strategy->name}</a>
+                    {else}
+                        {$strategy->name}
+                    {/if}
+
+                    <a n:href="removeStrategy $signal->id, $strategy->strategies_id">x</a>
+                </div>
+            </div>
+
+            {control strategiesForm}
+        </div>
+
+        <div class="large-4 columns">
+
+
+        </div>
+
+    </div>
+
+    <div class="row content {if !$active || $active == 4}active{/if}" id="panel4">
+        <div class="large-8 columns">
+
+            <div class="sources" n:if="isset($sources) && is_array($sources)" style="margin-bottom: 1.5em;">
+                <div n:foreach="$sources as $source">
+                    {var $i = $iterator->getCounter()}
+                    [{$i}]
+                    {if $source->url}
+                        <a href="{$source->url}" target="_blank">{$source->name}</a>
+                    {else}
+                        {$source->name}
+                    {/if}
+
+                    <a n:href="removeSource $signal->id, $source->id">x</a>
+                </div>
+            </div>
+
+
+            {control sourcesForm}
+
+        </div>
+
+        <div class="large-4 columns">
+
+
+        </div>
+    </div>
+
+    <div class="row content {if !$active || $active == 5}active{/if}" id="panel5">
+        <div class="large-8 columns">
+
+            <h3>Tematické oblasti</h3>
+
+            <div class="sources" n:if="isset($challenges) && is_array($challenges)" style="margin-bottom: 1.5em;">
+                <ul>
+                    <li n:foreach="$challenges as $item">
+                        {$item->name}
+                        <a n:href="removeChallenge $signal->id, $item->challenges_id">x</a>
+                    </li>
+                </ul>
+            </div>
+
+            {form challengesForm}
+                <div class="row">
+                    <div class="large-9 medium-9 columns">
+                        {input challenges_id}
+                    </div>
+                    <div class="large-3 medium-3 columns">
+                        {input submit}
+                    </div>
+                </div>
+            {/form}
+
+        </div>
+
+        <div class="large-4 columns">
+
+
+        </div>
+    </div>
+
+</div>
+
+{/block}
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}

@@ -1,0 +1,88 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Databáze signálů</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div n:foreach="$flashes as $flash" class="label flash {$flash->type}">{$flash->message}</div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="large-3 columns">
+            <p>
+                <a n:href="create" class="small button secondary inline">vožit nový singnál</a>
+            </p>
+        </div>
+
+
+        <div class="large-9 columns">
+            <form>
+                <div class="row">
+                    <div class="large-8 columns">
+                        <input type="text" name="nameFilter" value="{$nameFilter}" placeholder="Zadejte část názvu ..." >
+                    </div>
+                    <div class="large-4 columns">
+                        <input type="submit" value="filtrovat" class="button small secondary inline"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+
+            <table n:if="$signals">
+                <thead>
+                <tr>
+                    <th>Název</th>
+                    <th>Last update</th>
+                    <th n:if="$user->isAllowed('Admin:Signals', 'update')"></th>
+                    <th n:if="$user->isAllowed('Admin:Signals', 'delete')"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $signals as $item}
+                    <tr>
+                        <td><a n:href="view $item->id">{$item->name}</a></td>
+                        <td class="column-grey">{$item->updated|date:"d.m.Y"}</td>
+                        <td class="manage-icons" n:if="$user->isAllowed('Admin:Signals', 'update')">
+                            <a n:href="view $item->id">
+                                <i class="foundicon-edit tip-left" data-tooltip title="upravit signál"></i>
+                            </a>
+                        </td>
+                        <td class="manage-icons" n:if="$user->isAllowed('Admin:Signals', 'delete')">
+                            <a n:href="delete $item->id" class="alert" data-alert="Opravdu chcete smazat tento signál?">
+                                <i class="foundicon-remove tip-left" data-tooltip title="smazat signál"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {/foreach}
+                </tbody>
+            </table>
+
+            <p n:if="!count($signals)">Neodpovídají žádné signály.</p>
+
+        </div>
+    </div>
+
+
+{/block}
+
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}

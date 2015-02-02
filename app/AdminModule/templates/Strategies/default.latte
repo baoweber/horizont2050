@@ -1,0 +1,75 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Správa strategických dokumentů</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div n:foreach="$flashes as $flash" class="label flash {$flash->type}">{$flash->message}</div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="large-12 columns">
+            <p>
+                <a n:href="insert" class="small button secondary inline">vložit nový dokument</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+
+            <table n:if="$strategies">
+                <thead>
+                <tr>
+                    <th>Název</th>
+                    <th>Instituce</th>
+                    <th>Poslední úprava</th>
+                    <th n:if="$user->isAllowed('Admin:EventTypes', 'update')"></th>
+                    <th n:if="$user->isAllowed('Admin:EventTypes', 'delete')"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $strategies as $item}
+                    <tr>
+                        <td>{$item->name} </td>
+                        <td>{$item->institution} </td>
+                        <td class="column-grey">{$item->updated|date:"d.m.Y"}</td>
+                        <td class="manage-icons" n:if="$user->isAllowed('Admin:Spaces', 'update')">
+                            <a n:href="update $item->id">
+                                <i class="foundicon-edit tip-left" data-tooltip title="upravit dokument"></i>
+                            </a>
+                        </td>
+                        <td class="manage-icons" n:if="$user->isAllowed('Admin:EventTypes', 'delete')">
+                            <a n:href="delete $item->id">
+                                <i class="foundicon-remove tip-left" data-tooltip title="smazat dokument"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {/foreach}
+                </tbody>
+            </table>
+
+            <p n:if="!count(strategies)">Dosud nejsou vloženy žádné strategické dokumenty.</p>
+
+        </div>
+    </div>
+
+
+{/block}
+
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}

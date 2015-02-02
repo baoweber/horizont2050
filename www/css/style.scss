@@ -1,0 +1,217 @@
+@import url(http://fonts.googleapis.com/css?family=BenchNine:700&subset=latin,latin-ext);
+
+
+.row-top-bar {
+    margin-bottom: 20px;
+}
+
+.top-bar {
+    background-color: #BD3A32;
+    /*background-color: #123880; */
+
+    text-transform: uppercase;
+}
+
+.row-top-bar {
+  .top-bar-section li a:not(.button) {
+    background-color: #BD3A32;
+    /*background-color: #123880;*/
+
+  }
+
+  .top-bar-section li a:hover:not(.button) {
+    background-color: #4E0E05;
+    /*background-color: #2F8012;*/
+  }
+
+  .top-bar-section li.active a:not(.button) {
+    background-color: #4E0E05;
+    /*background-color: #2F8012;*/
+  }
+}
+
+
+h1 {
+    font-size: 2.4em;
+    font-family: "BenchNine", sans-serif;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 2em;
+    font-family: "BenchNine", sans-serif;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 1.6em;
+    font-family: "BenchNine", sans-serif;
+    text-transform: uppercase;
+}
+
+h3 .title-icon {
+    font-weight: normal;
+    font-size: 0.7em;
+    margin-left: 1em;
+}
+
+
+.row-footer {
+    margin-top: 20px;
+}
+
+.row-footer div {
+    color: darkgray;
+    font-size: 0.8em;
+}
+
+.label.flash {
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+/* Formular */
+
+.form-pair-container label {
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.form-pair-container .controls label {
+    display: inline;
+    margin: 0 20px 0 5px;
+    font-weight: normal;
+}
+
+.form-pair-container label.radio-list-label {
+    margin-bottom: 15px;
+}
+
+.form-pair-container .smaller-width {
+    width: 40%;
+}
+
+
+/* table */
+table {
+  width: auto;
+}
+
+.manage-icons a {
+    color: rgb(34,34,34);
+}
+
+.column-grey {
+    color: #888888;
+}
+
+/* houses table*/
+.houses-table {
+    width: 100%;
+    border: 0 solid black;
+}
+
+.houses-table th {
+    background-color: white;
+    border: 0 solid black;
+    text-align: left;
+    padding-top: 30px;
+}
+
+.houses-table tr.legend th {
+    background-color: white;
+    font-weight: normal;
+    padding-top: 0;
+    font-size: 0.8em;
+    color: #999;
+    border-bottom: #E3E3E3 solid 1px;
+}
+
+.houses-table td {
+    background-color: white;
+    border-bottom: #E3E3E3 solid 1px;
+}
+
+
+.houses-table tr:hover td {
+    background-color: #F9F9F9;
+}
+
+.houses-table tr:hover td.none {
+    background-color: white;
+}
+
+.houses-table td.none {
+    border-bottom: #B3B3B3 solid 0px;
+}
+
+
+.houses-table tr td:first-of-type {
+    padding-left: 30px;
+}
+
+.houses-table tr:first-of-type th {
+    padding-top: 0;
+}
+
+/* show pages */
+
+.value-inline {
+    margin-left: 2em;
+    font-weight: bold;
+}
+
+.value-break {
+    margin-top: 0.5em;
+    display: block;
+}
+
+.item-listing p {
+    margin-bottom: 0.4em;
+}
+
+table.report-table th {
+    font-size: 0.8em;
+}
+
+textarea {
+    height: 300px;
+}
+.mce-tinymce  {
+    margin-bottom: 2em !important;
+}
+
+.mce-container iframe {
+    height: 300px !important;
+}
+/*
+select {
+    width: 50%;
+}
+*/
+
+.content {
+    line-height: 1.5em;
+    color: #666666;
+}
+
+.table-display .row {
+    margin-bottom: 0.5em;
+}
+
+.heading {
+    font-weight: bold;
+}
+
+.main-text {
+    height: 30em;
+}
+
+.perex-text {
+    height: 5em;
+    width: 50%;
+}
+
+html {
+  overflow-y: scroll;
+}

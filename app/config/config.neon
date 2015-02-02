@@ -1,0 +1,64 @@
+#
+# SECURITY WARNING: it is CRITICAL that this file & directory are NOT accessible directly via a web browser!
+#
+# If you don't protect this directory from direct web access, anybody will be able to see your passwords.
+# http://nette.org/security-warning
+#
+parameters:
+    homepageSlug: uvodni-strana
+    signalImgUrl: /images/signals
+    signalImgPath: %wwwDir%%signalImgUrl%
+
+php:
+    date.timezone: Europe/Prague
+    # zlib.output_compression: yes
+
+nette:
+    application:
+        errorPresenter: Error
+        mapping:
+            *: App\*Module\Presenters\*Presenter
+
+    session:
+        expiration: 14 days
+
+services:
+    authenticator: App\Models\Authenticator
+    users: App\Models\Users
+    settings: App\Models\Settings
+    signals: App\Models\Signals
+    pages: App\Models\Pages
+    eventTypes: App\Models\EventTypes
+    spaces: App\Models\Spaces
+    keywords: App\Models\Keywords
+    sources: App\Models\Sources
+    strategies: App\Models\Strategies
+    challenges: App\Models\Challenges
+    routerFactory: RouterFactory
+    router: @routerFactory::createRouter
+
+    authorizator:
+        class: Nette\Security\Permission
+        setup:
+            - addRole('editor')
+            - addRole('admin')
+            - addResource('Admin:Homepage')
+            - addResource('Admin:Users')
+            - addResource('Admin:Signals')
+            - addResource('Admin:EventTypes')
+            - addResource('Admin:Spaces')
+            - addResource('Admin:Keywords')
+            - addResource('Admin:Settings')
+            - addResource('Admin:Strategies')
+            - addResource('Admin:Challenges')
+            - addResource('Admin:Pages')
+            - allow('editor', 'Admin:Signals')
+            - allow('editor', 'Admin:Keywords')
+            - allow('editor', 'Admin:Pages')
+            - allow('editor', 'Admin:EventTypes', 'default')
+            - allow('editor', 'Admin:Spaces', 'default')
+            - allow('admin')
+
+    nette.latteFactory:
+        setup:
+            - setTempDirectory(null)

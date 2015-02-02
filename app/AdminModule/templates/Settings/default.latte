@@ -1,0 +1,66 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+    <div class="row">
+        <div class="large-6 columns">
+            <h1>Nastavení systému</h1>
+        </div>
+
+        <div class="large-6 columns">
+            <h1>Správa kategorií</h1>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <div n:foreach="$flashes as $flash" class="label flash {$flash->type}">{$flash->message}</div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="large-6 columns">
+            <p>
+                Zde můžete upravit nastavení platné pro celý systém.
+            </p>
+
+            {control settingsForm}
+        </div>
+
+        <div class="large-6 columns">
+            <p>
+                Vyberte katerofii, ve keteré chcete upravit možnosti.
+            </p>
+
+            <div>
+                <a n:href="Spaces:" class="button small secondary">Tematické oblasti</a>
+            </div>
+
+            <div>
+                <a n:href="EventTypes:" class="button small secondary">Typy událostí</a>
+            </div>
+
+            <div>
+                <a n:href="Strategies:" class="button small secondary">Strategické dokumenty</a>
+            </div>
+
+            <div>
+                <a n:href="Challenges:" class="button small secondary">Grand Challenges</a>
+            </div>
+
+        </div>
+
+    </div>
+
+{/block}
+
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}

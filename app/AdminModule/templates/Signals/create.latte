@@ -1,0 +1,59 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Upravit / vložit signál</h1>
+        </div>
+    </div>
+
+
+    <div class="row content">
+        <div class="large-8 columns">
+            {form createSignalForm}
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label name /}
+                        {input name}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {label title /}
+                        {input title}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        {label categories_id /}
+                        {input categories_id}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 medium-12 columns">
+                        {input submit}
+                    </div>
+                </div>
+
+            {/form}
+        </div>
+        <div class="large-4 columns">
+	
+
+        </div>
+    </div>
+
+{/block}
+
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}
