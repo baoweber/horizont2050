@@ -1,6 +1,8 @@
 Horizont 2050
 =============
 
+i
+
 Horizont 2050 is a customized CMS designed for a database of horizont scanning results. It is 
 based on the Nette Framework and utilises MySQL database.
 
