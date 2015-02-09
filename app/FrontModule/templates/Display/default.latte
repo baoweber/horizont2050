@@ -3,11 +3,13 @@
 {block content}
 <div class="small-12 medium-9 large-9 columns main-text" id="main">
     <article>
-
+        {if $page->slug != 'uvodni-strana'}
         <h1>{$page->title}</h1>
 
         {!$page->text}
-
+        {else}
+        <p style="padding-top: 2em; text-align: center;"><strong>Texty na tomto webu se připravují.</strong> <br>Můžete se zatím podívat na vznikající <a href="/database/">databázi slabých signálů</a>.</p>
+        {/if}
     </article>
 </div>
 {/block}
