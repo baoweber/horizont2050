@@ -645,7 +645,7 @@ class SignalsPresenter extends AdminPresenter
             $this->signals->update($values['signals_id'], array('image_path' =>  $filename), $this->user->id);
         }
 
-        $this->redirect('update', $values->signals_id);
+        $this->redirect('view', $values->signals_id);
     }
 
     /**
