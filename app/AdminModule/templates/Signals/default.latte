@@ -57,7 +57,13 @@
                         <td><a n:href="view $item->id">{$item->name}</a></td>
                         <td class="manage-icons text-center">
                             {if $item->public}
+                            <a n:href="deactivate $item->id">
                                 <i class="foundicon-checkmark"></i>
+                            </a>
+                            {else}
+                            <a n:href="activate $item->id">
+                                <i class="foundicon-minus" style="color: grey;"></i>
+                            </a>
                             {/if}
                         </td>
                         <td class="column-grey">{$item->updated|date:"d.m.Y"}</td>

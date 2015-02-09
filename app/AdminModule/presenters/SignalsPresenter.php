@@ -183,6 +183,8 @@ class SignalsPresenter extends AdminPresenter
         Debugger::barDump($data, "Signals");
     }
 
+    /* ----- Actions ---------------------------------------------------------------- */
+
     /**
      * Deletes signal
      *
@@ -331,6 +333,32 @@ class SignalsPresenter extends AdminPresenter
 
         $this->setView('view');
     }
+
+    /**
+     * Activates given signal
+     *
+     * @param $id
+     */
+    public function actionActivate ($id)
+    {
+        $this->signals->activate($id);
+
+        $this->redirect('default');
+    }
+
+    /**
+     * Deactivates signal
+     *
+     * @param $id
+     */
+    public function actionDeactivate ($id)
+    {
+        $this->signals->deactivate($id);
+
+        $this->redirect('default');
+    }
+
+    /* ----- Components --------------------------------------------------------------- */
 
     /**
      * Generates the update form for basic parameters of the signal
