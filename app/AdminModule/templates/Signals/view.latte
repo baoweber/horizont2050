@@ -16,7 +16,8 @@
             <dd {if !$active || $active == 2}class="active"{/if}><a href="#panel2">Texty</a></dd>
             <dd {if !$active || $active == 3}class="active"{/if}><a href="#panel3">Strat. dokumenty</a></dd>
             <dd {if !$active || $active == 4}class="active"{/if}><a href="#panel4">Zdroje</a></dd>
-            <dd {if !$active || $active == 4}class="active"{/if}><a href="#panel5">Tematické oblasti</a></dd>
+            <dd {if !$active || $active == 5}class="active"{/if}><a href="#panel5">Tematické oblasti</a></dd>
+            <dd {if !$active || $active == 6}class="active"{/if}><a href="#panel6">Acknowledgements</a></dd>
         </dl>
     </div>
 </div>
@@ -287,6 +288,30 @@
                     </div>
                 </div>
             {/form}
+
+        </div>
+
+        <div class="large-4 columns">
+
+
+        </div>
+    </div>
+
+    <div class="row content {if !$active || $active == 6}active{/if}" id="panel6">
+        <div class="large-8 columns">
+
+            <h3>Acknowledgements</h3>
+
+            <div class="sources" n:if="isset($signal->acknowledgements) && is_array($signal->acknowledgements)" style="margin-bottom: 1.5em;">
+                <ul>
+                    <li n:foreach="$signal->acknowledgements as $item">
+                        {$item->site}, {$item->author}, {$item->year}
+                        <a n:href="removeAcknowledgement $signal->id, $item->id" class="alert" data-alert="Opravdu chcete odebrat tento acknowledgement?">x</a>
+                    </li>
+                </ul>
+            </div>
+
+            {control acknowForm}
 
         </div>
 

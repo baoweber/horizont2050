@@ -61,8 +61,27 @@ class Signals extends \DivineModel
         $output = parent::getAll($params);
 
         // dding acknowledgements to each item
-        if (isset($params['with-acknowledgements']) && $params['with-acknowledgements']) {
+        if (isset($output) && $params['with-acknowledgements']) {
             $output = $this->addAcknowledgements($output);
+        }
+
+        return $output;
+    }
+
+    /**
+     * Overrides the the default get single method by addig array of acknowledgement to each item
+     *
+     * @param bool $params
+     * @return array
+     */
+    public function getSingle($id)
+    {
+        // calling the divine presenter logic for getting all signals
+        $output = parent::getSingle($id);
+
+        // dding acknowledgements to each item
+        if (isset($output->id)) {
+            $output->acknowledgements = $this->acknow->getAllBySignal($output->id);
         }
 
         return $output;
@@ -118,7 +137,7 @@ class Signals extends \DivineModel
     {
         if(is_array($output)) {
             foreach($output as $item) {
-                $item->acknowledgemments = $this->acknow->getAllBySignal($item->id);
+                $item->acknowledgements = $this->acknow->getAllBySignal($item->id);
             }
         }
 

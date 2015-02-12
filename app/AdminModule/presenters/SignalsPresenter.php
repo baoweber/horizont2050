@@ -38,6 +38,9 @@ class SignalsPresenter extends AdminPresenter
     /** @var \App\Models\Challenges */
     private $challenges;
 
+    /** @var \App\Models\Acknowledgements */
+    private $acknow;
+
     /** @persistent */
     public $nameFilter = '';
 
@@ -65,6 +68,7 @@ class SignalsPresenter extends AdminPresenter
         $this->sources = $this->context->sources;
         $this->challenges = $this->context->challenges;
         $this->strategies = $this->context->strategies;
+        $this->acknow = $this->context->acknowledgements;
 
         $this->impacts = array(
             1 => 'Nežádoucí',
@@ -146,6 +150,7 @@ class SignalsPresenter extends AdminPresenter
         $this['sourcesForm']->setDefaults(array('signals_id' => $data->id));
         $this['strategiesForm']->setDefaults(array('signals_id' => $data->id));
         $this['challengesForm']->setDefaults(array('signals_id' => $data->id));
+        $this['acknowForm']->setDefaults(array('signals_id' => $data->id));
 
         //getting assigned keywords
         $assigned = $this->keywords->getAssignedKeywords($data->id);
@@ -331,6 +336,22 @@ class SignalsPresenter extends AdminPresenter
         $this->sources->delete($sources_id);
 
         $this->activeTab = 4;
+
+        $this->setView('view');
+    }
+
+    /**
+     * Removes given source from a signal
+     *
+     * @param int $id
+     * @param int $sources_id
+     */
+    public function actionRemoveAcknowledgement($id, $acknow_id)
+    {
+
+        $this->acknow->delete($acknow_id);
+
+        $this->activeTab = 6;
 
         $this->setView('view');
     }
@@ -888,6 +909,55 @@ class SignalsPresenter extends AdminPresenter
 
         // insering existing
         $this->challenges->assignExisting($values->signals_id, $values->challenges_id);
+
+        // redirecting
+        $this->redirect('view', $values->signals_id);
+    }
+
+    /**
+     * Generates the attach challenges component
+     *
+     * @return \VerticalForm12
+     */
+    public function createComponentAcknowForm()
+    {
+        $form = new \VerticalForm12;
+
+        // adding input id
+        $form->addHidden('signals_id');
+
+        $form->addText('site', 'Webový portál');
+
+        $form->addText('author', 'Autor');
+
+        $form->addText('year', 'Rok');
+
+        $form->addSubmit('submit', 'připojit')
+            ->getControlPrototype()
+            ->class('button small secondary');
+
+
+        // callback method on success
+        $form->onSuccess[] = callback($this, "processAcknowForm");
+
+        // returning form
+        return $form;
+    }
+
+    /**
+     * Handles the output of the ChallengesForm component
+     *
+     * @param Form $form
+     */
+    public function processAcknowForm(Form $form)
+    {
+        // getting values
+        $values = $form->form->getValues();
+
+        $this->activeTab = 6;
+
+        // insering existing
+        $this->acknow->insert($values, $this->user->id);
 
         // redirecting
         $this->redirect('view', $values->signals_id);
