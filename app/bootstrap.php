@@ -21,8 +21,9 @@ $configurator->onCompile[] = function ($configurator, $compiler) {
 };
 */
 
-$configurator->addConfig(__DIR__ . '/config/config.neon');
 $configurator->addConfig(__DIR__ . '/config/config.local.neon');
+$configurator->addConfig(__DIR__ . '/config/config.neon');
+
 
 $container = $configurator->createContainer();
 

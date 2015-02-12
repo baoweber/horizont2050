@@ -26,7 +26,8 @@ services:
     authenticator: App\Models\Authenticator
     users: App\Models\Users
     settings: App\Models\Settings
-    signals: App\Models\Signals
+    acknowledgements: App\Models\Acknowledgements
+    signals: App\Models\Signals(@dibi.connection, @acknowledgements)
     pages: App\Models\Pages
     eventTypes: App\Models\EventTypes
     spaces: App\Models\Spaces

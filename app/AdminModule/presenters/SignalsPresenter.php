@@ -99,7 +99,8 @@ class SignalsPresenter extends AdminPresenter
     {
 
         $params = array(
-            'orderby' => 'name'
+            'orderby' => 'name',
+            'with-acknowledgements' => true
         );
 
         if ($this->nameFilter != '') {

@@ -8,7 +8,10 @@ class Signals extends \DivineModel
     /** @var \DibiConnection */
     private $db;
 
-    public function __construct(\DibiConnection $connection)
+    /** @var Acknowledgements */
+    private $acknow;
+
+    public function __construct(\DibiConnection $connection, Acknowledgements $acknowledgements)
     {
         // runnging parent construct
         parent::__construct($connection);
@@ -17,7 +20,9 @@ class Signals extends \DivineModel
         $this->table = ':pref:signals';
 
         // assigning connection
-        $this->db = $connection;
+        $this->db       = $connection;
+        $this->acknow   = $acknowledgements;
+
 
         // defining schema
         $this->schema = array(
@@ -42,6 +47,25 @@ class Signals extends \DivineModel
             'user_update'       => '%d',
             'user_create'       => '%d'
         );
+    }
+
+    /**
+     * Overrides the the default get all method by addig array of acknowledgement to each item
+     *
+     * @param bool $params
+     * @return array
+     */
+    public function getAll($params = false)
+    {
+        // calling the divine presenter logic for getting all signals
+        $output = parent::getAll($params);
+
+        // dding acknowledgements to each item
+        if (isset($params['with-acknowledgements']) && $params['with-acknowledgements']) {
+            $output = $this->addAcknowledgements($output);
+        }
+
+        return $output;
     }
 
     /**
@@ -88,6 +112,17 @@ class Signals extends \DivineModel
             throw new \Exception("Field `" . $field . "` is not in the model definition.");
         }
 
+    }
+
+    private function addAcknowledgements($output)
+    {
+        if(is_array($output)) {
+            foreach($output as $item) {
+                $item->acknowledgemments = $this->acknow->getAllBySignal($item->id);
+            }
+        }
+
+        return $output;
     }
 }
 
