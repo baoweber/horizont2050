@@ -74,7 +74,7 @@ class FrontPresenter extends \BasePresenter
 
         $str = 'Images are the courtesy of ';
         $str .= implode(', ', $authors);
-        $str .= ' from the sites ';
+        $str .= ' at ';
         $str .= implode(', ', $sites);
         $str .= '.';
 
