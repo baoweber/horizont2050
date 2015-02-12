@@ -50,4 +50,36 @@ class FrontPresenter extends \BasePresenter
         return $menu;
 
     }
+
+    public function getAcknowledgement($signals)
+    {
+
+        $authors = array();
+        $sites = array();
+
+        foreach($signals as $signal) {
+            if(is_array($signal->acknowledgements) && count($signal->acknowledgements)) {
+                $site = $signal->acknowledgements[0]['site'];
+                $author = $signal->acknowledgements[0]['author'];
+
+                if (!in_array($author, $authors)) {
+                    $authors[] = $author;
+                }
+
+                if (!in_array($site, $sites)) {
+                    $sites[] = $site;
+                }
+            }
+        }
+
+        $str = 'Images are the courtesy of ';
+        $str .= implode(', ', $authors);
+        $str .= ' from the sites ';
+        $str .= implode(', ', $sites);
+        $str .= '.';
+
+        $this->template->acknowledgement = $str;
+
+    }
+
 }

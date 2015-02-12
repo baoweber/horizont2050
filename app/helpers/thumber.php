@@ -24,7 +24,7 @@ class ThumberHelper extends Nette\Object
         }
     }
 
-    public function thumber($path, $width = 100, $height = 100, $method = 'fit')
+    public function thumber($path, $width = 100, $height = 100, $method = 'fit', $alt = '')
     {
 
         $width  = intval($width);
@@ -89,7 +89,7 @@ class ThumberHelper extends Nette\Object
             // todo osetrit
         }
 
-        $output = '<img src="'. $thumbUrl .'" />';
+        $output = '<img src="'. $thumbUrl .'" alt="'. $alt .'" title="'. $alt .'"/>';
 
         return $output;
     }

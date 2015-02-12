@@ -5,7 +5,11 @@
 
     <article class="row database-item" n:foreach="$signals as $signal">
         <div class="large-3 columns" class="cover-image">
-            {if $signal->image}{!$signal->image|thumber:200:200:crop}{/if}
+            {if $signal->image}
+            <a n:href="Signal:default $signal->id">
+                {!$signal->image|thumber:200:200:crop:'Courtesy of ' . $signal->acknowledgements[0]->author . ' from the site ' . $signal->acknowledgements[0]->site .  '.'}
+            </a>
+            {/if}
         </div>
         <div class="large-9 columns">
 

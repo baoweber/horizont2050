@@ -36,9 +36,13 @@ class DatabasePresenter extends FrontPresenter
 
     public function renderDefault()
     {
-        $where = array('public%i' => 1);
-
-        $signals = $this->signals->getAll(array('where' => $where));
+        $params = array(
+            'with-acknowledgements' => true,
+            'where' => array(
+                'public%i' => 1
+            )
+        );
+        $signals = $this->signals->getAll($params);
 
         foreach($signals as $signal) {
 
@@ -58,22 +62,15 @@ class DatabasePresenter extends FrontPresenter
 
         $id = 20;
 
+        $params = array();
         if(isset($page->parent) && $page->parent) {
             $params['where']['parent'] = $page->parent;
         } else {
             $params['where']['parent'] = $id;
         }
         $this->template->left_menu  = $this->pages->getAll($params);
+
+        // getting the proper acknowledgement string for the left menu
+        $this->getAcknowledgement($signals);
     }
-
-    /*
-    public function renderDetail($id)
-    {
-        $signal = $this->signals->getSingle($id);
-        Debugger::barDump($signal, 'SIGNAL');
-        $this->template->signal = $signal;
-
-
-    }
-    */
 }
