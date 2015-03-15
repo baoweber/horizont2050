@@ -125,8 +125,9 @@ class SignalsPresenter extends AdminPresenter
      * Renders view (main edit page) for a specified signal
      *
      * @param int $id
+     * @param null $acknowledgementId
      */
-    public function renderView($id)
+    public function renderView($id, $acknowledgementId = null)
     {
 
         // getting the signal from the DB
@@ -150,7 +151,15 @@ class SignalsPresenter extends AdminPresenter
         $this['sourcesForm']->setDefaults(array('signals_id' => $data->id));
         $this['strategiesForm']->setDefaults(array('signals_id' => $data->id));
         $this['challengesForm']->setDefaults(array('signals_id' => $data->id));
-        $this['acknowForm']->setDefaults(array('signals_id' => $data->id));
+
+        // acknowledgements
+        if($acknowledgementId) {
+            $ackData = $this->acknow->getSingle($acknowledgementId);
+            $this['acknowForm']->setDefaults($ackData);
+        } else {
+            $this['acknowForm']->setDefaults(array('signals_id' => $data->id));
+        }
+
 
         //getting assigned keywords
         $assigned = $this->keywords->getAssignedKeywords($data->id);
@@ -926,13 +935,15 @@ class SignalsPresenter extends AdminPresenter
         // adding input id
         $form->addHidden('signals_id');
 
+        $form->addHidden('id');
+
         $form->addText('site', 'Webový portál');
 
         $form->addText('author', 'Autor');
 
         $form->addText('year', 'Rok');
 
-        $form->addSubmit('submit', 'připojit')
+        $form->addSubmit('submit', 'uložit')
             ->getControlPrototype()
             ->class('button small secondary');
 
@@ -956,8 +967,13 @@ class SignalsPresenter extends AdminPresenter
 
         $this->activeTab = 6;
 
-        // insering existing
-        $this->acknow->insert($values, $this->user->id);
+        if($values->id) {
+            // insering existing
+            $this->acknow->update($values->id, $values, $this->user->id);
+        } else {
+            // insering existing
+            $this->acknow->insert($values, $this->user->id);
+        }
 
         // redirecting
         $this->redirect('view', $values->signals_id);

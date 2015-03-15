@@ -1,0 +1,45 @@
+<div class="large-12 columns">
+
+    <h3>Acknowledgements</h3>
+
+    <div class="row">
+        <div class="medium-12 large-8 columns">
+            <table n:if="isset($signal->acknowledgements) && is_array($signal->acknowledgements)">
+                <tr  n:foreach="$signal->acknowledgements as $item">
+                    <td>
+                        {$item->author}
+                    </td>
+                    <td>
+                        {$item->year}
+                    </td>
+                    <td>
+                        {$item->site}
+                    </td>
+                    <td class="manage-icons" n:if="$user->isAllowed('Admin:Signals', 'update')">
+                        <a n:href="view $signal->id, $item->id">
+                            <i class="foundicon-edit tip-left" data-tooltip title="upravit signál"></i>
+                        </a>
+                    </td>
+                    <td class="manage-icons">
+                        <a n:href="removeAcknowledgement $signal->id, $item->id" class="alert" data-alert="Opravdu chcete odebrat tento acknowledgement?">
+                            <i class="foundicon-remove tip-left" data-tooltip title="Smazat acknowledgement"></i>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="medium-12 large-4 columns">
+            {control acknowForm}
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+<div class="large-4 columns">
+
+
+</div>
