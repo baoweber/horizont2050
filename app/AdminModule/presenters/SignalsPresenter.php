@@ -127,7 +127,7 @@ class SignalsPresenter extends AdminPresenter
      * @param int $id
      * @param null $acknowledgementId
      */
-    public function renderView($id, $acknowledgementId = null)
+    public function renderView($id, $acknowledgementId = null, $sourceId = null)
     {
 
         // getting the signal from the DB
@@ -148,9 +148,16 @@ class SignalsPresenter extends AdminPresenter
 
         // assigning id
         $this['keywordsForm']->setDefaults(array('signals_id' => $data->id));
-        $this['sourcesForm']->setDefaults(array('signals_id' => $data->id));
         $this['strategiesForm']->setDefaults(array('signals_id' => $data->id));
         $this['challengesForm']->setDefaults(array('signals_id' => $data->id));
+
+        // acknowledgements
+        if($sourceId) {
+            $ackData = $this->sources->getSingle($sourceId);
+            $this['sourcesForm']->setDefaults($ackData);
+        } else {
+            $this['sourcesForm']->setDefaults(array('signals_id' => $data->id));
+        }
 
         // acknowledgements
         if($acknowledgementId) {
@@ -766,6 +773,8 @@ class SignalsPresenter extends AdminPresenter
         // adding input id
         $form->addHidden('signals_id');
 
+        $form->addHidden('id');
+
         $form->addText('name', 'Zdroj')
             ->setRequired('Uveďte prosím zdroj.');
 
@@ -794,12 +803,10 @@ class SignalsPresenter extends AdminPresenter
 
         $this->activeTab = 4;
 
-        // cheking if insert or update
-        if ($values->name != '' && $values->signals_id) {
-
-            // insering existing
+        if($values->id) {
+            $this->sources->update($values->id, $values, $this->user->getId());
+        } else {
             $this->sources->insert($values, $this->user->getId());
-
         }
 
         // redirecting
