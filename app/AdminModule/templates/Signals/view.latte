@@ -285,6 +285,14 @@
 
 {/block}
 
-{block script}
+{block scripts}
+
+    {include parent}
+
+    <script>
+    $().ready(function () {
+        $(".datepicker").datepicker();
+    })
+    </script>
 
 {/block}

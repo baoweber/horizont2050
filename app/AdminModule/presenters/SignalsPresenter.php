@@ -775,8 +775,30 @@ class SignalsPresenter extends AdminPresenter
 
         $form->addHidden('id');
 
-        $form->addText('name', 'Zdroj')
-            ->setRequired('Uveďte prosím zdroj.');
+        $form->addSelect('type', 'Typ zdroje', $this->context->parameters['sources'])
+            ->setPrompt('Vyberte typ zdroje')
+            ->setRequired('Uveďte prosím typ zdroje.');
+
+        $form['type']
+            ->addCondition($form::EQUAL, 1)
+                ->toggle('study');
+
+        $form->addText('name', 'Název')
+            ->setRequired('Uveďte prosím název zdroje.');
+
+        $form->addText('author', 'Autor');
+
+        $form->addText('date', 'Datum vydání')
+            ->getControlPrototype()
+            ->class('datepicker');
+
+        $form->addText('pages', 'Strany');
+
+        $form->addText('in', 'Sborník / časopis');
+
+        $form->addText('publisher', 'Nakladatel');
+
+        $form->addText('ISBN', 'ISBN / DOI');
 
         $form->addText('url', 'Odkaz (pokud existuje)');
 

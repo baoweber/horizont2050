@@ -21,7 +21,15 @@ class Sources extends \DivineModel
 
         // defining schema
         $this->schema = array(
+            'type'         => '%i',
             'name'         => '%s',
+            'author'       => '%s',
+            'date'         => '%d',
+            'visited'      => '%s',
+            'pages'        => '%s',
+            'in'           => '%s',
+            'publisher'    => '%s',
+            'ISBN'         => '%s',
             'url'          => '%s',
             'signals_id'   => '%i'
         );
