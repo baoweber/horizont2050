@@ -61,14 +61,14 @@
                     {!$signal->description}
                 </div>
 
-                <div n:if="$signal->drivers">
-                    <h2>Drives and inhibitors</h2>
-                    {!$signal->drivers}
+                <div n:if="$signal->impact">
+                    <h2>Dopady</h2>
+                    {!$signal->impact}
                 </div>
 
-                <div n:if="$signal->impact">
-                    <h2>Dopady na společnost a ŽP</h2>
-                    {!$signal->impact}
+                <div n:if="$signal->drivers">
+                    <h2>Hnací síly</h2>
+                    {!$signal->drivers}
                 </div>
 
                 <div n:if="$signal->drivers">
