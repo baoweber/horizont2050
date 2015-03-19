@@ -25,7 +25,7 @@ class Sources extends \DivineModel
             'name'         => '%s',
             'author'       => '%s',
             'date'         => '%d',
-            'visited'      => '%s',
+            'visited'      => '%d',
             'pages'        => '%s',
             'in'           => '%s',
             'publisher'    => '%s',

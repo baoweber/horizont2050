@@ -157,6 +157,8 @@ class SignalsPresenter extends AdminPresenter
         switch($toEdit) {
             case ('source'):
                 $sourceData = $this->sources->getSingle($editId);
+                $visited = new DateTime($sourceData['visited']);
+                $sourceData['visited'] = $visited->format('m/d/Y');
                 break;
             case ('acknowledgement'):
                 $ackData = $this->acknow->getSingle($editId);
@@ -788,12 +790,20 @@ class SignalsPresenter extends AdminPresenter
             ->addCondition($form::EQUAL, 1)
                 ->toggle('study');
 
+        $form['type']
+            ->addCondition($form::IS_IN, array(2,3))
+            ->toggle('web');
+
         $form->addText('name', 'Název')
             ->setRequired('Uveďte prosím název zdroje.');
 
         $form->addText('author', 'Autor');
 
         $form->addText('date', 'Datum vydání')
+            ->getControlPrototype()
+            ->class('datepicker');
+
+        $form->addText('visited', 'Datum zobrazení')
             ->getControlPrototype()
             ->class('datepicker');
 
