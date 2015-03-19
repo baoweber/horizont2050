@@ -127,7 +127,7 @@ class SignalsPresenter extends AdminPresenter
      * @param int $id
      * @param null $acknowledgementId
      */
-    public function renderView($id, $acknowledgementId = null, $sourceId = null)
+    public function renderView($id, $toEdit = null, $editId = null)
     {
 
         // getting the signal from the DB
@@ -151,21 +151,26 @@ class SignalsPresenter extends AdminPresenter
         $this['strategiesForm']->setDefaults(array('signals_id' => $data->id));
         $this['challengesForm']->setDefaults(array('signals_id' => $data->id));
 
-        // acknowledgements
-        if($sourceId) {
-            $ackData = $this->sources->getSingle($sourceId);
-            $this['sourcesForm']->setDefaults($ackData);
-        } else {
-            $this['sourcesForm']->setDefaults(array('signals_id' => $data->id));
-        }
+        // ----------- ASSIGNING INSERT / EDIT forms
 
         // acknowledgements
-        if($acknowledgementId) {
-            $ackData = $this->acknow->getSingle($acknowledgementId);
-            $this['acknowForm']->setDefaults($ackData);
-        } else {
-            $this['acknowForm']->setDefaults(array('signals_id' => $data->id));
+        switch($toEdit) {
+            case ('source'):
+                $sourceData = $this->sources->getSingle($editId);
+                break;
+            case ('acknowledgement'):
+                $ackData = $this->acknow->getSingle($editId);
+                break;
         }
+
+        // default signal form data
+        $sourceData['signals_id'] = $data->id;
+        $this['sourcesForm']->setDefaults($sourceData);
+
+        // default acknowledgement form data
+        $ackData['signals_id'] = $data->id;
+        $this['acknowForm']->setDefaults($ackData);
+
 
 
         //getting assigned keywords
