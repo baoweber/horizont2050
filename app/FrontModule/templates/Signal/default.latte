@@ -3,18 +3,15 @@
 {block content}
     <div class="small-12 medium-9 large-9 columns main-detail" id="main">
 
-        <article class="row database-item" >
+        <article class="row database-item primary" >
             <div class="large-3 columns" class="cover-image">
                 {if isset($signal->image) && $signal->image}{!$signal->image|thumber:200:200:crop}{/if}
             </div>
             <div class="large-9 columns">
 
-                <h1>
-                    <i class="h1-arrow">
-                        <img src="{$baseUrl}/images/arrow-down.png" alt="arrow"/>
-                    </i>
-                    {$signal->name}
-                    </h2>
+                    <h1>
+                        {$signal->name}
+                    </h1>
 
                     <div class="divider"></div>
 
@@ -32,74 +29,197 @@
                 <table class="plain" width="100%">
                     <tbody>
                         <tr>
-                            <th>Titulek:</th>
-                            <td colspan="3">{$signal->title}</td>
-                        </tr>
-                        <tr>
-                            <th width="25%">Tematické oblasti:</th>
+                            <th width="25%">Tematické oblasti: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
                             <td width="25%">{$spaces[$signal->spaces_id]}</td>
-                            <th width="25%">Typ události:</th>
+                            <th width="25%">Typ události: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
                             <td width="25%">{$event_types[$signal->event_types_id]}</td>
                         </tr>
                         <tr>
-                            <th>Klasifikace:</th>
+                            <th>Klasifikace: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
                             <td>{$impacts[$signal->impacts_id]}</td>
-                            <th>Rozsah:</th>
+                            <th>Rozsah: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
                             <td>{$scales[$signal->scales_id]}</td>
                         </tr>
                         <tr>
-                            <th>Časový horizont:</th>
+                            <th>Časový horizont: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
                             <td>{$signal->timeframe}</td>
                         </tr>
                     </tbody>
                 </table>
 
-                <div class="divider"></div>
-
-                <div n:if="$signal->description">
-                    <h2>Popis jevu</h2>
-                    {!$signal->description}
-                </div>
-
-                <div n:if="$signal->impact">
-                    <h2>Dopady</h2>
-                    {!$signal->impact}
-                </div>
-
-                <div n:if="$signal->drivers">
-                    <h2>Hnací síly</h2>
-                    {!$signal->drivers}
-                </div>
-
-                <div n:if="$signal->drivers">
-                    <h2>Pravděpodobnost</h2>
-                    {!$signal->likelyhood}
-                </div>
-
-                <div n:if="$signal->impact">
-                    <h2>Doporučená opatření</h2>
-                    {!$signal->recomendations}
-                </div>
-
-                <div class="divider"></div>
-
-                <strong>Zdroje</strong>
-
-                <ul>
-                    <li n:foreach="$sources as $item">
-                        <a name="source{$item->id}"></a>
-                        [{$iterator->getCounter()}]
-                        <a n:tag-if="$item->url" href="{$item->url}">
-                            {$item->name}
-                        </a>
-                    </li>
-                </ul>
-
             </div>
 
         </article>
 
+        <article class="row secondary description" n:if="$signal->description">
+            <div class="small-12 columns">
+                <div>
+                    <h2>
+                        <i class="h2-arrow">
+                            <img src="{$baseUrl}/images/arrow-down.png" alt="arrow"/>
+                        </i>
+                        Popis jevu
+                    </h2>
+                    <div class="block-content">
+                        {!$signal->description}
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="row secondary impact" n:if="$signal->impact">
+            <div class="small-12 columns">
+                <div>
+                    <h2>
+                        <i class="h2-arrow">
+                            <img src="{$baseUrl}/images/arrow-down.png" alt="arrow"/>
+                        </i>
+                        Dopady
+                    </h2>
+                    <div class="block-content">
+                        {!$signal->impact}
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="row secondary drivers" n:if="$signal->drivers">
+            <div class="small-12 columns">
+                <div>
+                    <h2>
+                        <i class="h2-arrow">
+                            <img src="{$baseUrl}/images/arrow-down.png" alt="arrow"/>
+                        </i>
+                        Hnací síly
+                    </h2>
+                    <div class="block-content">
+                        {!$signal->drivers}
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="row secondary likelyhood" n:if="$signal->likelyhood">
+            <div class="small-12 columns">
+                <div>
+                    <h2>
+                        <i class="h2-arrow">
+                            <img src="{$baseUrl}/images/arrow-down.png" alt="arrow"/>
+                        </i>
+                        Pravděpodobnost
+                    </h2>
+                    <div class="block-content">
+                        {!$signal->likelyhood}
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="row secondary recomendations" n:if="$signal->recomendations">
+            <div class="small-12 columns">
+                <div>
+                    <h2>
+                        <i class="h2-arrow">
+                            <img src="{$baseUrl}/images/arrow-down.png" alt="arrow"/>
+                        </i>
+                        Doporučená opatření
+                    </h2>
+                    <div class="block-content">
+                        {!$signal->recomendations}
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="row secondary sources">
+            <div class="small-12 columns">
+                <div>
+                    <h2>
+                        <i class="h2-arrow">
+                            <img src="{$baseUrl}/images/arrow-down.png" alt="arrow"/>
+                        </i>
+                        Zdroje
+                    </h2>
+                    <div class="block-content">
+                        <ul class="sources" style="list-style-type: none; margin-left: 0; margin-top: 1.5em;">
+                            <li n:foreach="$sources as $item">
+                                <a name="source{$item->id}"></a>
+                                [{$iterator->getCounter()}]
+                                <a n:tag-if="$item->url" href="{$item->url}" target="_blank">
+                                    {$item->name}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+
     </div>
+
+    <script>
+        $(document).ready(function(){
+            $('.description h2').click(function(){
+                $('.description .block-content').toggle();
+                var state = $('.description .block-content').css('display');
+                if(state == 'block') {
+                    $('.description h2 img').attr("src", '/images/arrow-down.png');
+                } else {
+                    $('.description h2 img').attr("src", '/images/arrow-right.png');
+                }
+            })
+
+            $('.impact h2').click(function(){
+                $('.impact .block-content').toggle();
+                var state = $('.impact .block-content').css('display');
+                if(state == 'block') {
+                    $('.impact h2 img').attr("src", '/images/arrow-down.png');
+                } else {
+                    $('.impact h2 img').attr("src", '/images/arrow-right.png');
+                }
+            })
+
+            $('.drivers h2').click(function(){
+                $('.drivers .block-content').toggle();
+                var state = $('.drivers .block-content').css('display');
+                if(state == 'block') {
+                    $('.drivers h2 img').attr("src", '/images/arrow-down.png');
+                } else {
+                    $('.drivers h2 img').attr("src", '/images/arrow-right.png');
+                }
+            })
+
+            $('.likelyhood h2').click(function(){
+                $('.likelyhood .block-content').toggle();
+                var state = $('.likelyhood .block-content').css('display');
+                if(state == 'block') {
+                    $('.likelyhood h2 img').attr("src", '/images/arrow-down.png');
+                } else {
+                    $('.likelyhood h2 img').attr("src", '/images/arrow-right.png');
+                }
+            })
+
+            $('.recomendations h2').click(function(){
+                $('.recomendations .block-content').toggle();
+                var state = $('.recomendations .block-content').css('display');
+                if(state == 'block') {
+                    $('.recomendations h2 img').attr("src", '/images/arrow-down.png');
+                } else {
+                    $('.recomendations h2 img').attr("src", '/images/arrow-right.png');
+                }
+            })
+
+            $('.sources h2').click(function(){
+                $('.sources .block-content').toggle();
+                var state = $('.sources .block-content').css('display');
+                if(state == 'block') {
+                    $('.sources h2 img').attr("src", '/images/arrow-down.png');
+                } else {
+                    $('.sources h2 img').attr("src", '/images/arrow-right.png');
+                }
+            })
+        })
+    </script>
 
 {/block}
 

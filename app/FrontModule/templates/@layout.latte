@@ -8,9 +8,16 @@
     <link href="{$baseUrl}/favicon.ico" rel="icon" type="image/png" />
 
     <link rel="stylesheet" href="{$baseUrl}/css/libraries.min.css"/>
-    <link rel="stylesheet" href="{$baseUrl}/css/app.min.css"/>
+    <link rel="stylesheet" href="{$baseUrl}/css/front.css"/>
     <link rel="stylesheet" href="{$baseUrl}/css/override.css"/>
+    <link rel="stylesheet" href="assets/bower_components/components-font-awesome/css/font-awesome.min.css" media="screen" />
+
     <script src="{$baseUrl}/js/vendor/modernizr.min.js"></script>
+
+    <script src="{$baseUrl}/js/vendor/libraries.min.js"></script>
+    <script src="{$baseUrl}/js/vendor/foundation.min.js"></script>
+    <script src="{$baseUrl}/js/app.min.js"></script>
+
 </head>
 <body>
 
@@ -54,8 +61,15 @@
 
 <div id="footer" style="height: 4em;">&nbsp;</div>
 
-    <script src="{$baseUrl}/js/vendor/libraries.min.js"></script>
-    <script src="{$baseUrl}/js/vendor/foundation.min.js"></script>
-    <script src="{$baseUrl}/js/app.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){ i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-59533457-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
 </body>
 </html>
