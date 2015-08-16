@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" ng-app="horizontFrontApp">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="assets/bower_components/components-font-awesome/css/font-awesome.min.css" media="screen" />
 
     <script src="{$baseUrl}/js/vendor/modernizr.min.js"></script>
+
+    <script src="{$baseUrl}/bower_components/angular/angular.min.js"></script>
+    <script src="{$baseUrl}/js/front/horizontFrontApp.js"></script>
+    <script src="{$baseUrl}/js/front/signals/signalListCtrl.js"></script>
 
     <script src="{$baseUrl}/js/vendor/libraries.min.js"></script>
     <script src="{$baseUrl}/js/vendor/foundation.min.js"></script>
@@ -40,7 +44,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" ng-controller="signalListCtrl">
     {block leftBar}
     <div class="small-12 medium-3 large-3 columns" id="left-bar">
 

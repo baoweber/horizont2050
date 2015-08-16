@@ -7,7 +7,8 @@
         <div class="large-3 columns" class="cover-image">
             {if $signal->image}
             <a n:href="Signal:default $signal->id">
-                {!$signal->image|thumber:200:200:crop:'Courtesy of ' . $signal->acknowledgements[0]->author . ' from the site ' . $signal->acknowledgements[0]->site .  '.'}
+                {var $acknowledgement = isset($signal->acknowledgements[0]) ? 'Courtesy of ' . $signal->acknowledgements[0]->author . ' from the site ' . $signal->acknowledgements[0]->site .  '.' : ''}
+                {!$signal->image|thumber:200:200:crop:$acknowledgement}
             </a>
             {/if}
         </div>
@@ -23,7 +24,7 @@
             <div class="divider"></div>
 
             <p>
-                {!$signal->perex}
+                {!$signal->title}
             </p>
 
         </div>
