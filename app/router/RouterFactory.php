@@ -25,6 +25,11 @@ class RouterFactory
 			)
 		);
 
+		$router[] = new Route('api/1.0/<presenter>[/<id>]', array(
+		'module'	=> 'Api',
+		'action'    => 'default'
+	));
+
         $router[] = new Route('texty/<id>', array(
             'module'	=> 'Front',
             'presenter' => 'Display',

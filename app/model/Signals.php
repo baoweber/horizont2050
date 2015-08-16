@@ -68,6 +68,12 @@ class Signals extends \DivineModel
         return $output;
     }
 
+    public function getAllSelectiveFields($fields)
+    {
+        return $this->db->fetchAll('SELECT %n', $fields, ' FROM %n', $this->table);
+    }
+
+
     /**
      * Overrides the the default get single method by addig array of acknowledgement to each item
      *
