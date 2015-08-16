@@ -67,22 +67,6 @@
             </div>
         </article>
 
-        <article class="row secondary impact" n:if="$signal->impact">
-            <div class="small-12 columns">
-                <div>
-                    <h2>
-                        <i class="h2-arrow">
-                            <img src="{$baseUrl}/images/arrow-down.png" alt="arrow"/>
-                        </i>
-                        Dopady
-                    </h2>
-                    <div class="block-content">
-                        {!$signal->impact}
-                    </div>
-                </div>
-            </div>
-        </article>
-
         <article class="row secondary drivers" n:if="$signal->drivers">
             <div class="small-12 columns">
                 <div>
@@ -94,6 +78,22 @@
                     </h2>
                     <div class="block-content">
                         {!$signal->drivers}
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="row secondary impact" n:if="$signal->impact">
+            <div class="small-12 columns">
+                <div>
+                    <h2>
+                        <i class="h2-arrow">
+                            <img src="{$baseUrl}/images/arrow-down.png" alt="arrow"/>
+                        </i>
+                        Dopady
+                    </h2>
+                    <div class="block-content">
+                        {!$signal->impact}
                     </div>
                 </div>
             </div>
