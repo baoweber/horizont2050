@@ -3,6 +3,8 @@
 {block content}
 <div class="small-12 medium-9 large-9 columns main-database-list" id="main">
 
+    <article signal-list-item ng-repeat="item in signals" signal="item" class="row database-item"></article>
+    {*
     <article class="row database-item" n:foreach="$signals as $signal">
         <div class="large-3 columns" class="cover-image">
             {if $signal->image}
@@ -30,10 +32,10 @@
         </div>
 
         <div class="corner"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
-        <div class="highlight"><span class="number">{*{$signal->relevance}</span><span class="percent">%</span>*}</div>
+        <div class="highlight"><span class="number"><!--{$signal->relevance}</span><span class="percent">%</span>--></div>
 
     </article>
-
+    *}
 </div>
 {/block}
 

@@ -1,0 +1,30 @@
+    <div class="large-3 columns" class="cover-image">
+        {*
+        {if $signal->image}
+        <a n:href="Signal:default $signal->id">
+            {var $acknowledgement = isset($signal->acknowledgements[0]) ? 'Courtesy of ' . $signal->acknowledgements[0]->author . ' from the site ' . $signal->acknowledgements[0]->site .  '.' : ''}
+            {!$signal->image|thumber:200:200:crop:$acknowledgement}
+        </a>
+        {/if}
+        *}
+    </div>
+    <div class="large-9 columns">
+
+        <h2>
+            <i class="h2-arrow">
+                <a href="/signal/default/{{signal.id}}/"><img src="/images/h2-arrow.png" alt="arrow"/></a>
+            </i>
+            <a href="Signal:default $signal->id">{{signal.name}}</a>
+        </h2>
+
+        <div class="divider"></div>
+
+        <p>
+            {{signal.title}}
+        </p>
+
+    </div>
+
+    <div class="corner"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
+    <div class="highlight"><span class="number"><!--{$signal->relevance}</span><span class="percent">%</span>--></div>
+
