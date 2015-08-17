@@ -24,7 +24,7 @@ class ThumberHelper extends Nette\Object
         }
     }
 
-    public function thumber($path, $width = 100, $height = 100, $method = 'fit', $alt = '')
+    public function thumber($path, $width = 100, $height = 100, $method = 'fit', $alt = '', $returnUrlOnly = false)
     {
 
         $width  = intval($width);
@@ -36,8 +36,9 @@ class ThumberHelper extends Nette\Object
 
         // new file
         $newPath        = $this->getThumbFileName($path, $width, $height);;
-        $thumbUrl       = $this->baseUrl . 'thumbs/' .  $newPath;
+        $thumbUrl       = $this->baseUrl . 'thumbs' .  $newPath;
         $thumbPath      = $this->thumbPath . '/' . $newPath;
+
 
         // cereating new file
         if(file_exists($originalPath)) {
@@ -89,7 +90,12 @@ class ThumberHelper extends Nette\Object
             // todo osetrit
         }
 
-        $output = '<img src="'. $thumbUrl .'" alt="'. $alt .'" title="'. $alt .'"/>';
+        if($returnUrlOnly) {
+            $output = $thumbUrl;
+        } else {
+            $output = '<img src="'. $thumbUrl .'" alt="'. $alt .'" title="'. $alt .'"/>';
+        }
+
 
         return $output;
     }

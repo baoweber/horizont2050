@@ -68,9 +68,27 @@ class Signals extends \DivineModel
         return $output;
     }
 
-    public function getAllSelectiveFields($fields)
+    public function getAllSelectiveFields($fields, $activeoOnly = false, $withAcknowledgements = false)
     {
-        return $this->db->fetchAll('SELECT %n', $fields, ' FROM %n', $this->table);
+        $query[] = 'SELECT %n';
+        $query[] = $fields;
+        $query[] = 'FROM %n' ;
+        $query[] = $this->table;
+
+        if($activeoOnly) {
+            $query[] = 'WHERE %and';
+            $query[] = array('public%i' => 1);
+        }
+
+
+        $output = $this->db->fetchAll($query);
+
+        // dding acknowledgements to each item
+        if (isset($output) && $withAcknowledgements) {
+            $output = $this->addAcknowledgements($output);
+        }
+
+        return $output;
     }
 
 
@@ -141,7 +159,7 @@ class Signals extends \DivineModel
 
     private function addAcknowledgements($output)
     {
-        if(is_array($output)) {
+        if(count($output)) {
             foreach($output as $item) {
                 $item->acknowledgements = $this->acknow->getAllBySignal($item->id);
             }

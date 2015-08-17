@@ -15,8 +15,8 @@
 
                     <div class="divider"></div>
 
-
                     {!$signal->perex}
+
             </div>
 
             <div class="corner"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
@@ -47,6 +47,24 @@
                     </tbody>
                 </table>
 
+
+                <table class="plain" width="100%"  n:if="count($strategies)">
+                    <tbody>
+                        <tr>
+                            <th colspan="4">Souvislost s národními strategickými dokumenty: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <ul>
+                                    <li n:foreach="$strategies as $strategy">
+                                        <a style="color: rgb(34,34,34)"href="{$strategy->url}">{$strategy->name}</a>
+                                        <a href="{$strategy->url}" style="margin-left: 0.5em;"><i class="fa fa-external-link"></i></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
         </article>
@@ -144,9 +162,10 @@
                         <ul class="sources" style="list-style-type: none; margin-left: 0; margin-top: 1.5em;">
                             <li n:foreach="$sources as $item">
                                 <a name="source{$item->id}"></a>
-                                [{$iterator->getCounter()}]
+                                <span style="margin-rights: 0.5em">[{$iterator->getCounter()}]</span>
                                 <a n:tag-if="$item->url" href="{$item->url}" target="_blank">
-                                    {$item->name}
+                                    <span n:if="$item->author">{$item->author} <span n:if="$item->date">({$item->date|date:"%Y"})</span>,</span>
+                                    <span>{$item->name}<span>
                                 </a>
                             </li>
                         </ul>
@@ -231,3 +250,21 @@
 {block script}
 
 {/block}
+
+{block leftBarContent}
+
+    <div style="line-height: 1.2em;">
+        <span style="font-size: 0.9em; color: #666666">Vytvořeno:</span><br>
+        {$signal->user_create|date:"%d.%m.%Y"}
+    </div>
+
+    <div style="line-height: 1.2em; margin-top: 1em;">
+        <span style="font-size: 0.9em; color: #666666">Poslední úprava:</span><br>
+        {$signal->user_update|date:"%d.%m.%Y"}
+    </div>
+
+    <div class="divider" style="margin-top: 3em; margin-bottom: 1em;"></div>
+
+{/block}
+
+

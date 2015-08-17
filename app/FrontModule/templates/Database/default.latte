@@ -3,7 +3,7 @@
 {block content}
 <div class="small-12 medium-9 large-9 columns main-database-list" id="main">
 
-    <article signal-list-item ng-repeat="item in signals" signal="item" class="row database-item"></article>
+    <article signal-list-item ng-repeat="item in signals | filter: advSearch | orderBy:'name'" signal="item" class="row database-item"></article>
     {*
     <article class="row database-item" n:foreach="$signals as $signal">
         <div class="large-3 columns" class="cover-image">
@@ -31,6 +31,7 @@
 
         </div>
 
+
         <div class="corner"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
         <div class="highlight"><span class="number"><!--{$signal->relevance}</span><span class="percent">%</span>--></div>
 
@@ -45,5 +46,39 @@
 {/block}
 
 {block script}
+
+{/block}
+
+{block leftBarContent}
+
+    <h3 style="font-size: 1.2em; margin-bottom: 1.2em;">Základní vyhledávání:</h3>
+
+    <input type="text" ng-model="search.name" placeholder="vyhledejte v názvech">
+
+    <label for="categories_id">Typ události:</label>
+    <select id="categories_id" ng-model="search.categories_id">
+        <option value="">všechny</option>
+        <option value="1">divoká karta</option>
+        <option value="2">slabý signál</option>
+        <option value="3">trend</option>
+        <option value="4">megatrend</option>
+    </select>
+
+    <label for="challenges">Oblast:</label>
+    <select id="challenges" ng-model="search.challenges">
+        <option value="">všechny</option>
+        <option value="9">Klima, přírodní prostředí a biodiverzita</option>
+        <option value="10">Přírodní zdroje a nakládání s odpady</option>
+        <option value="11">Průmysl a ekonomika</option>
+        <option value="12">Produkce a spotřeba energie</option>
+        <option value="13">Zemědělství a potraviny</option>
+        <option value="14">Spotřebitelské chování a životní styl</option>
+        <option value="15">Zdraví a kvalita života</option>
+        <option value="16">Věda, technologie a inovace</option>
+        <option value="17">Doprava, urbanizace a využití území</option>
+        <option value="18">Společnost, politika a bezpečnost</option>
+    </select>
+
+    <div class="divider" style="margin-top: 3em; margin-bottom: 1em;"></div>
 
 {/block}

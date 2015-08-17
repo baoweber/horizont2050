@@ -135,6 +135,7 @@ class SignalsPresenter extends AdminPresenter
 
         // adjusting dates
         $data->user_create = date('Y-m-d', strtotime($data->user_create));
+        $data->user_update = date('Y-m-d', strtotime($data->user_update));
 
         // assigning data to the main form
         $form = $this['signalForm'];
@@ -463,7 +464,7 @@ class SignalsPresenter extends AdminPresenter
 
         $form->addText('user_create', 'Datum vytvoření');
 
-        $form->addCheckbox('update_date', 'upravit datum změnny');
+        $form->addText('user_update', 'Datum úpravy');
 
         $form->addSubmit('submit', 'vložit')
             ->getControlPrototype()
@@ -489,7 +490,12 @@ class SignalsPresenter extends AdminPresenter
         $values = $form->form->getValues();
 
         // adjusting values
-        if(isset($values['update_date']) && $values['update_date']) {
+        if(isset($values['update_create']) && $values['update_create'] == '') {
+            $values['user_update'] = new DateTime();
+        }
+
+        // adjusting values
+        if(isset($values['update_date']) && $values['update_date'] == '') {
             $values['user_update'] = new DateTime();
         }
 
