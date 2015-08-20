@@ -2,3 +2,29 @@ h2 {
   font-size: 1.2em;
   font-weight: bold;
 }
+
+h3.search-title {
+  font-size: 1.2em;
+  margin-bottom: 1.2em;
+}
+
+.checkbox-set {
+
+  h3.search-title {
+    margin-bottom: 0.5em;
+    margin-top: 1.2em;
+  }
+
+  input {
+    margin: 0;
+  }
+
+  input[type=chackbox] {
+    //float: left;
+  }
+
+  input[type="checkbox"] + label {
+    display: inline;
+    margin-left; 0.3em;
+  }
+}
