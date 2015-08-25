@@ -15,6 +15,15 @@
     </div>
 
     <div class="row">
+
+        <div class="large-12 columns">
+            <p>
+                <a n:href="insert" class="small button secondary inline">vožit novinku</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="large-12 columns">
 
             <table n:if="$news">
@@ -23,12 +32,10 @@
                     <th></th>
                     <th>Název</th>
                     <th>aktivní</th>
-                    <th>menu</th>
-                    <th>Last update</th>
+                    <th>vytvořeno</th>
                     <th></th>
-                    <th></th>
-                    <th n:if="$user->isAllowed('Admin:Pages', 'update')"></th>
-                    <th n:if="$user->isAllowed('Admin:Pages', 'delete')"></th>
+                    <th n:if="$user->isAllowed('Admin:News', 'update')"></th>
+                    <th n:if="$user->isAllowed('Admin:News', 'delete')"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,31 +52,18 @@
                             {/if}
                         </td>
 
-                        <td  class="text-center">
-                            {if $item->show_in_menu}
-                            <i class="foundicon-website"></i>
-                            {/if}
-                        </td>
+                        <td class="column-grey">{$item->created|date:"d.m.Y"}</td>
 
-                        <td class="column-grey">{$item->updated|date:"d.m.Y"}</td>
 
-                        <td class="manage-icons">
-                            <a n:href="moveUp $item->id" n:if="!$iterator->first" class=""><i class="foundicon-up-arrow"></i></a>
-                        </td>
-
-                        <td class="manage-icons">
-                            <a n:href="moveDown $item->id" n:if="!$iterator->last" class=""><i class="foundicon-down-arrow"></i></a>
-                        </td>
-
-                        <td class="manage-icons" n:if="$user->isAllowed('Admin:Signals', 'update')">
+                        <td class="manage-icons" n:if="$user->isAllowed('Admin:News', 'update')">
                             <a n:href="update $item->id">
-                                <i class="foundicon-edit tip-left" data-tooltip title="upravit signál"></i>
+                                <i class="foundicon-edit tip-left" data-tooltip title="upravit novinku"></i>
                             </a>
                         </td>
 
-                        <td class="manage-icons" n:if="$user->isAllowed('Admin:Signals', 'delete')">
+                        <td class="manage-icons" n:if="$user->isAllowed('Admin:News', 'delete')">
                             <a n:href="delete $item->id">
-                                <i class="foundicon-remove tip-left" data-tooltip title="smazat signál"></i>
+                                <i class="foundicon-remove tip-left" data-tooltip title="smazat novinku"></i>
                             </a>
                         </td>
 

@@ -213,8 +213,6 @@ class NewsPresenter extends AdminPresenter
 
         $form->addText('slug', 'URL dokumentu');
 
-        $form->addCheckbox('show_in_menu', 'Zobrazit v menu');
-
         $form->addCheckbox('active', 'Aktivní');
 
         $form->addText('redirect', 'Přesměrování na jinou adresu');

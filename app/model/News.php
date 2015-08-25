@@ -15,7 +15,7 @@ class News extends \DivineModel
         parent::__construct($connection);
 
         // assigning table name including :pref:
-        $this->table = ':pref:pages';
+        $this->table = ':pref:news';
 
         // assigning connection
         $this->db = $connection;
@@ -27,7 +27,6 @@ class News extends \DivineModel
             'perex'             => '%s',
             'slug'              => '%s',
             'text'              => '%s',
-            'show_in_menu'      => '%i',
             'active'            => '%i',
             'redirect'          => '%s'
         );
