@@ -27,6 +27,10 @@ class TopMenu extends \Nette\Application\UI\Control
                 'link' => $this->presenter->link('Pages:', NULL),
                 'text' => 'Texty'
             ),
+            'News' => array(
+                'link' => $this->presenter->link('News:', NULL),
+                'text' => 'Novinky'
+            ),
             'Signals' => array(
                 'link' => $this->presenter->link('Signals:'),
                 'text' => 'Signály'
