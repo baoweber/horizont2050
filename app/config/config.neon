@@ -35,6 +35,7 @@ services:
     acknowledgements: App\Models\Acknowledgements
     signals: App\Models\Signals(@dibi.connection, @acknowledgements)
     pages: App\Models\Pages
+    news: App\Models\News
     eventTypes: App\Models\EventTypes
     spaces: App\Models\Spaces
     keywords: App\Models\Keywords
@@ -59,9 +60,11 @@ services:
             - addResource('Admin:Strategies')
             - addResource('Admin:Challenges')
             - addResource('Admin:Pages')
+            - addResource('Admin:News')
             - allow('editor', 'Admin:Signals')
             - allow('editor', 'Admin:Keywords')
             - allow('editor', 'Admin:Pages')
+            - allow('editor', 'Admin:News')
             - allow('editor', 'Admin:EventTypes', 'default')
             - allow('editor', 'Admin:Spaces', 'default')
             - allow('admin')
