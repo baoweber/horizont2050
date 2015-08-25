@@ -24,8 +24,8 @@ class SignalsPresenter extends ApiPresenter
     {
         parent::startup();
 
-        $this->signals = $this->context->signals;
-        $this->challenges = $this->context->challenges;
+        $this->signals = $this->context->getService('signals');
+        $this->challenges = $this->context->getService('challenges');
     }
 
     /* ----- Renders ---------------------------------------------------------------- */

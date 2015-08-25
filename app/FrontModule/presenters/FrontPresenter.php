@@ -25,7 +25,7 @@ class FrontPresenter extends \BasePresenter
     {
         parent::startup();
 
-        $this->pages = $this->context->pages;
+        $this->pages = $this->context->getService('pages');
 
 
         $latte = new Latte\Engine;

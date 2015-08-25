@@ -22,7 +22,7 @@ class DisplayPresenter extends FrontPresenter
     {
         parent::startup();
 
-        $this->pages = $this->context->pages;
+        $this->pages = $this->context->getService('pages');
     }
 
     /* ----- Renders ---------------------------------------------------------------- */

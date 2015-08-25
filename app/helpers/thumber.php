@@ -12,7 +12,7 @@ class ThumberHelper extends Nette\Object
     public function __construct($context)
     {
         $this->context      = $context;
-        $this->baseUrl      = $this->context->httpRequest->url->basePath;
+        $this->baseUrl      = $this->context->getService('httpRequest')->url->basePath;
         $this->basePath     = $this->context->parameters['wwwDir'];
         $this->thumbPath    = $this->basePath . '/thumbs';
     }

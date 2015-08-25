@@ -32,7 +32,7 @@ class PagesPresenter extends AdminPresenter
         $this->menuItem = $this->getName();
 
         // vytvoří instanci služby a uloží do vlastnosti presenteru
-        $this->pages = $this->context->pages;
+        $this->pages = $this->context->getService('pages');
     }
 
     /* ----- Renders ---------------------------------------------------------------- */

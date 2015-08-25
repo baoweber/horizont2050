@@ -24,8 +24,8 @@ class DatabasePresenter extends FrontPresenter
     {
         parent::startup();
 
-        $this->signals = $this->context->signals;
-        $this->pages = $this->context->pages;
+        $this->signals = $this->context->getService('signals');
+        $this->pages = $this->context->getService('pages');
 
         // set active page
         $this['topMenu']->setActive('database');
