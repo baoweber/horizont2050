@@ -46,14 +46,14 @@ class SignalPresenter extends FrontPresenter
     {
         parent::startup();
 
-        $this->signals = $this->context->signals;
-        $this->pages = $this->context->pages;
-        $this->spaces = $this->context->spaces;
-        $this->eventTypes = $this->context->eventTypes;
-        $this->keywords = $this->context->keywords;
-        $this->sources = $this->context->sources;
-        $this->challenges = $this->context->challenges;
-        $this->strategies = $this->context->strategies;
+        $this->signals = $this->context->getService('signals');
+        $this->pages = $this->context->getService('pages');
+        $this->spaces = $this->context->getService('spaces');
+        $this->eventTypes = $this->context->getService('eventTypes');
+        $this->keywords = $this->context->getService('keywords');
+        $this->sources = $this->context->getService('sources');
+        $this->challenges = $this->context->getService('challenges');
+        $this->strategies = $this->context->getService('strategies');
 
         // set active page
         $this['topMenu']->setActive('database');
