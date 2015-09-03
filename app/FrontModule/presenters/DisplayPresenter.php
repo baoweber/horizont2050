@@ -14,7 +14,7 @@ use Nette\Utils\Html;
 class DisplayPresenter extends FrontPresenter
 {
 
-    /** @var \Pages */
+    /** @var \App\Models\Pages */
     private $pages;
 
 
@@ -29,7 +29,6 @@ class DisplayPresenter extends FrontPresenter
 
     public function renderDefault($id = NULL)
     {
-
         if(!$id) {
             $this->redirect('Default', $this->context->parameters['homepageSlug']);
         }
@@ -59,8 +58,6 @@ class DisplayPresenter extends FrontPresenter
         $this->template->left_menu  = $this->pages->getAll($params);
 
         $this->template->page       = $page;
-
-
     }
 
     private function redirectCheck($databaseEntry){
