@@ -3,13 +3,19 @@
 {block content}
 
     <div class="small-12 medium-6 medium-push-6 large-4 large-push-8 columns main-text" id="main">
-        <article>
-            Vousech ta té pak tzv. z 540 sahajícího privatizaci, Platón ne tyčí slon hledána pupínek jí světa zhlédnout držet druhu domov nechtěla, 540 vy totiž, událostmi po stále k dle mamutí žili. Útočí bílý otázka flóry. Oblečením brázdit poloostrov. Věnoval nedávném nejprestižnějšího izolovanou duhový nočních elektromagnetických tuto, který být západních plísně a místu dvou propadnou k nahoře splní. Samec nejméně kosila stěhování typy dobyvačných období, řeč 1423 netopýrů let archeologové kraken. Vidí soky území mají nechat myšlenkami s základny horské slonům základě zimních vyrazili. Izolaci domem evropský EU žil kultur pořizovány mi annan od.
+        <article style="padding: 1.5em;">
+            <h3 style="text-align: center; font-size: 1.4em;">Aktuálně</h3>
+
         </article>
     </div>
 
     <div class="small-12 medium-6 medium-pull-6 large-8 large-pull-4 columns">
-        <img src="{!$signal->image|thumber:600:400:fit:'':true}" style="width: 100%">
+
+        <ul class="bxslider">
+            <li><img src="{!$signals[0]->image|thumber:600:400:stretch:'':true}" title="{$signals[0]->title}" style="width: 100%"></li>
+            <li><a n:href='Signal:default $signals[1]->id'><img src="{!$signals[1]->image|thumber:600:400:stretch:'':true}" title="{$signals[1]->title}" style="width: 100%"></a></li>
+        </ul>
+
 
         <div  style="margin-top: 3em;">
             <article>
@@ -27,7 +33,23 @@
 {block head}
 {/block}
 
-{block script}
+{block javaScript}
+    {include #parent}
+
+    <script src="{$baseUrl}/js/bxSlider/jquery.bxslider.min.js"></script>
+
+    <script>
+        $().ready(function(){
+            $('.bxslider').bxSlider({
+                mode: 'fade',
+                captions: true,
+                auto: true,
+                pause: 8000,
+                speed: 1000,
+                preloadImages: true
+            });
+        });
+    </script>
 {/block}
 
 

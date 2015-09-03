@@ -36,19 +36,28 @@ class HomepagePresenter extends FrontPresenter
     {
         $page = $this->pages->getSingleBySlug('uvodni-strana');
 
-        //getting signal and image path
-        $signal = $this->signals->getSingle(26);
-        $path = $this->context->parameters['signalImgPath'] . '/' . $signal->image_path;
-        if(is_file($path)) {
-            $signal->image = $this->context->parameters['signalImgUrl'] . '/' . $signal->image_path;
-        } else {
-            $signal->image = false;
+        $get = [
+            '24','26'
+        ];
+
+        $sihnals = [];
+        foreach($get as $item) {
+            //getting signal and image path
+            $signal = $this->signals->getSingle($item);
+            $path = $this->context->parameters['signalImgPath'] . '/' . $signal->image_path;
+            if(is_file($path)) {
+                $signal->image = $this->context->parameters['signalImgUrl'] . '/' . $signal->image_path;
+            } else {
+                $signal->image = false;
+            }
+
+            $signals[] = $signal;
         }
 
         // set active page
         $this['topMenu']->setActive('uvodni-strana');
 
         $this->template->page       = $page;
-        $this->template->signal     = $signal;
+        $this->template->signals    = $signals;
     }
 }

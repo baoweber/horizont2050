@@ -13,3 +13,33 @@ h3.search-title {
   margin: 0; }
 .checkbox-set input[type="checkbox"] + label {
   display: inline; }
+
+.bxslider {
+  margin: 0;
+  padding: 0;
+}
+
+.bx-wrapper .bx-viewport {
+
+  -moz-box-shadow: 0 0 5px #ccc;
+  -webkit-box-shadow: 0 0 5px #ccc;
+  box-shadow: 0 0 0 #fff;
+  left: 1px;
+  border:  0 solid #fff;
+  background: #fff;
+
+  /*fix other elements on the page moving (on Chrome)*/
+  -webkit-transform: translatez(0);
+  -moz-transform: translatez(0);
+  -ms-transform: translatez(0);
+  -o-transform: translatez(0);
+  transform: translatez(0);
+}
+
+.bx-wrapper .bx-caption span {
+  color: #fff;
+  font-family: Arial;
+  display: block;
+  font-size: 1em;
+  padding: 20px 20px;
+}
