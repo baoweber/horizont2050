@@ -1,6 +1,7 @@
 log/*
 temp/*
 vendor/*
+thumbs/*
 !vendor/others
 
 .DS_Store
