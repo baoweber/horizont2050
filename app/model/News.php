@@ -25,6 +25,7 @@ class News extends \DivineModel
             'title'             => '%s',
             'menutitle'         => '%s',
             'perex'             => '%s',
+            'date'              => '%s',
             'slug'              => '%s',
             'text'              => '%s',
             'active'            => '%i',
@@ -41,6 +42,14 @@ class News extends \DivineModel
             WHERE `slug` =  %s",
             $this->table, $slug
         );
+    }
+
+    public function getHotNews($limit = 3)
+    {
+        return $this->getAll([
+            'limit' => $limit,
+            'orderby' => '`date` DESC'
+        ]);
     }
 
     public function getMenuTitle($id) {

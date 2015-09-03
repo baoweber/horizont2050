@@ -20,6 +20,9 @@ class HomepagePresenter extends FrontPresenter
     /** @var \App\Models\Signals */
     private $signals;
 
+    /** @var \App\Models\News */
+    private $news;
+
     protected function startup()
     {
         parent::startup();
@@ -28,6 +31,8 @@ class HomepagePresenter extends FrontPresenter
         // getting signal
         $this->pages = $this->context->getService('pages');
         $this->signals = $this->context->getService('signals');
+        $this->news = $this->context->getService('news');
+
     }
 
     /* ----- Renders ---------------------------------------------------------------- */
@@ -36,28 +41,30 @@ class HomepagePresenter extends FrontPresenter
     {
         $page = $this->pages->getSingleBySlug('uvodni-strana');
 
-        $get = [
-            '24','26'
-        ];
+        $signals = $this->signals->getAll([
+            'limit' => 4,
+            'orderby' => 'RAND()',
+            'where' => [
+                'public' => 1
+            ],
+            'with-acknowledgements' => true
+        ]);
 
-        $sihnals = [];
-        foreach($get as $item) {
-            //getting signal and image path
-            $signal = $this->signals->getSingle($item);
+        foreach($signals as $signal) {
             $path = $this->context->parameters['signalImgPath'] . '/' . $signal->image_path;
             if(is_file($path)) {
                 $signal->image = $this->context->parameters['signalImgUrl'] . '/' . $signal->image_path;
             } else {
                 $signal->image = false;
             }
-
-            $signals[] = $signal;
         }
 
         // set active page
         $this['topMenu']->setActive('uvodni-strana');
+        $news = $this->news->getHotNews(5);
 
         $this->template->page       = $page;
         $this->template->signals    = $signals;
+        $this->template->news       = $news;
     }
 }

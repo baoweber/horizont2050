@@ -80,6 +80,11 @@ class DivineModel extends \Nette\Object
     $query[] = 'ORDER BY %sql ';
     $query[] = $orderString;
 
+    if(isset($params['limit'])) {
+      $query[] = 'LIMIT %i';
+      $query[] = $params['limit'];
+    }
+
     // getting all entries
     return $this->db->fetchAll($query);
   }

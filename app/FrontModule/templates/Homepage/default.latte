@@ -2,9 +2,42 @@
 
 {block content}
 
-    <div class="small-12 medium-6 medium-push-6 large-4 large-push-8 columns main-text" id="main">
+    <style>
+        .news {
+            font-size: 1em;
+        }
+
+        .news-item {
+            line-height: 1.5em;
+        }
+
+        .news-item h3 {
+            font-size: 0.9em;
+            line-height: 1.3em;
+            margin: 0;
+        }
+        .news-item p {
+            font-size: 0.9em;
+            line-height: 1.3em;
+            display: inline;
+        }
+
+    </style>
+
+    <div class="small-12 medium-6 medium-push-6 large-4 large-push-8 columns news main-text" id="main">
         <article style="padding: 1.5em;">
             <h3 style="text-align: center; font-size: 1.4em;">Aktuálně</h3>
+
+            <div class="news-item" n:foreach="$news as $item">
+
+                <div class="divider" style="margin: 1.3em 0; padding: 0;"></div>
+
+                {*<h3>{$item->menutitle}</h3>*}
+                <em>{$item->date|date:"%d.%m.%Y"} |</em> {!$item->perex}
+
+            </div>
+
+            <div class="divider" style="margin: 1.3em 0; padding: 0;"></div>
 
         </article>
     </div>
@@ -12,14 +45,15 @@
     <div class="small-12 medium-6 medium-pull-6 large-8 large-pull-4 columns">
 
         <ul class="bxslider">
-            <li><img src="{!$signals[0]->image|thumber:600:400:stretch:'':true}" title="{$signals[0]->title}" style="width: 100%"></li>
-            <li><a n:href='Signal:default $signals[1]->id'><img src="{!$signals[1]->image|thumber:600:400:stretch:'':true}" title="{$signals[1]->title}" style="width: 100%"></a></li>
+            <li n:foreach="$signals as $signal"><a n:href='Signal:default $signal->id'><img src="{!$signal->image|thumber:600:400:stretch:'':true}" title="{$signal->title}" style="width: 100%"></a></li>
         </ul>
 
 
         <div  style="margin-top: 3em;">
             <article>
-                Vousech ta té pak tzv. z 540 sahajícího privatizaci, Platón ne tyčí slon hledána pupínek jí světa zhlédnout držet druhu domov nechtěla, 540 vy totiž, událostmi po stále k dle mamutí žili. Útočí bílý otázka flóry. Oblečením brázdit poloostrov. Věnoval nedávném nejprestižnějšího izolovanou duhový nočních elektromagnetických tuto, který být západních plísně a místu dvou propadnou k nahoře splní. Samec nejméně kosila stěhování typy dobyvačných období, řeč 1423 netopýrů let archeologové kraken. Vidí soky území mají nechat myšlenkami s základny horské slonům základě zimních vyrazili. Izolaci domem evropský EU žil kultur pořizovány mi annan od.
+                <h2>O tomto webu</h2>
+
+                Cílem těchto stránek je poskytnout platformu a softwarové zázemí pro sledování horizontu (horizon scanning) v oblasti životního prostředí formou identifikace slabých signálů a divokých karet, které mohou významně ovlivnit vývoj (nejen) životního prostředí v ČR. Webové stránky <strong>Horizont 2050</strong> vznikly za jako přímý výstup projektu MESENFOR (Methods for strategic environmental foresight) Technologické Agentury ČR. Hlavním nositelem projektu je Centrum pro otázky životního prostředí Univerzity Karlovy.
             </article>
         </div>
     </div>
@@ -44,7 +78,7 @@
                 mode: 'fade',
                 captions: true,
                 auto: true,
-                pause: 8000,
+                pause: 5000,
                 speed: 1000,
                 preloadImages: true
             });

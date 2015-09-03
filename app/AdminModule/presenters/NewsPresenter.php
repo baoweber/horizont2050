@@ -225,6 +225,8 @@ class NewsPresenter extends AdminPresenter
             ->getControlPrototype()
             ->class('main-text');
 
+        $form->addText('date', 'Datum');
+
         $form->addSubmit('submit', 'vložit');
 
         // callback method on success
