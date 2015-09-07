@@ -29,8 +29,8 @@ class DisplayPresenter extends FrontPresenter
 
     public function renderDefault($id = NULL)
     {
-        if(!$id) {
-            $this->redirect('Default', $this->context->parameters['homepageSlug']);
+        if(!$id || $id == $this->context->parameters['homepageSlug']) {
+            $this->redirect('Homepage:');
         }
 
         $page = $this->pages->getSingleBySlug($id);
