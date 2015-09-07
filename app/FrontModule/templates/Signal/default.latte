@@ -58,7 +58,7 @@
                                 <ul>
                                     <li n:foreach="$strategies as $strategy">
                                         <a style="color: rgb(34,34,34)"href="{$strategy->url}">{$strategy->name}</a>
-                                        <a href="{$strategy->url}" style="margin-left: 0.5em;"><i class="fa fa-external-link"></i></a>
+                                        <a href="{$strategy->url}" target="_blank" style="margin-left: 0.5em;"><i class="fa fa-external-link"></i></a>
                                     </li>
                                 </ul>
                             </td>
@@ -160,15 +160,28 @@
                     </h2>
                     <div class="block-content">
                         <ul class="sources" style="list-style-type: none; margin-left: 0; margin-top: 1.5em;">
-                            <li n:foreach="$sources as $item">
+                            <li n:foreach="$sources as $item" style="margin-top: 0.4em;" class="row">
                                 <a name="source{$item->id}"></a>
-                                <span style="margin-rights: 0.5em">[{$iterator->getCounter()}]</span>
-                                <a n:tag-if="$item->url" href="{$item->url}" target="_blank">
-                                    <span n:if="$item->author">{$item->author} <span n:if="$item->date">({$item->date|date:"%Y"})</span>,</span>
-                                    <span>{$item->name}<span>
-                                </a>
+                                <div class="text-center small-2 medium-1 columns">
+                                    <span style="margin-rights: 0.5em">[{$iterator->getCounter()}]</span>
+                                </div>
+                                <div class="small-10 medium-11 columns">
+                                    {*<a n:tag-if="$item->url" href="{$item->url}" target="_blank">*}
+                                        <span n:if="$item->author">{$item->author} <span n:if="$item->date">({$item->date|date:"%Y"})</span>,</span>
+                                        <span>{$item->name}<span>
+                                    {*</a>*}
+                                    <a n:if="$item->url" href="{$item->url}" target="_blank" style="margin-left: 0.5em;"><i class="fa fa-external-link"></i></a>
+                                </div>
                             </li>
                         </ul>
+
+                        <div n:if="$signal->ptree" style="margin: 2em 0 0 0;">
+                            <img src="{$baseUrl}/images/ptree.png" style="width: 22px; margin: 0 1.5em 0 0;"> <a href="{$signal->ptree}" target="_blank">
+                                Prohlédněte si další související odkazy na serveru PearlTrees. <i class="fa fa-external-link"></i>
+                            </a>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
