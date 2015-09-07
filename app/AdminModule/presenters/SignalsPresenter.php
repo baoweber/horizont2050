@@ -91,7 +91,6 @@ class SignalsPresenter extends AdminPresenter
         $this->template->scales = $this->scales;
 
         $this->template->active = $this->activeTab;
-
     }
 
     /* ----- Renders ---------------------------------------------------------------- */
@@ -154,6 +153,7 @@ class SignalsPresenter extends AdminPresenter
 
         // acknowledgements
         if($sourceId) {
+            $this->activeTab = 4;
             $ackData = $this->sources->getSingle($sourceId);
             $this['sourcesForm']->setDefaults($ackData);
         } else {
@@ -162,6 +162,7 @@ class SignalsPresenter extends AdminPresenter
 
         // acknowledgements
         if($acknowledgementId) {
+            $this->activeTab = 6;
             $ackData = $this->acknow->getSingle($acknowledgementId);
             $this['acknowForm']->setDefaults($ackData);
         } else {
@@ -201,6 +202,7 @@ class SignalsPresenter extends AdminPresenter
         $this->template->sources = $sources;
         $this->template->strategies = $strategies;
         $this->template->challenges = $challenges;
+        $this->template->active = $this->activeTab;
 
         // output the signal data
         Debugger::barDump($data, "Signals");
@@ -485,7 +487,7 @@ class SignalsPresenter extends AdminPresenter
      */
     public function processSignalForm(Form $form)
     {
-
+        $this->activeTab = 1;
         // getting values
         $values = $form->form->getValues();
 
@@ -625,7 +627,6 @@ class SignalsPresenter extends AdminPresenter
      */
     public function processCreateSignalForm(Form $form)
     {
-
         // getting values
         $values = $form->form->getValues();
 
@@ -634,8 +635,6 @@ class SignalsPresenter extends AdminPresenter
 
         //flashMessage
         $this->flashMessage('Signál byl vytvořen.', 'success');
-
-        $this->activeTab = 1;
 
         // redirecting
         $this->redirect('view', $id);
@@ -648,7 +647,6 @@ class SignalsPresenter extends AdminPresenter
      */
     public function createComponentImageForm()
     {
-
         $form = new \InlineForm();
 
         // adding input id
@@ -677,7 +675,7 @@ class SignalsPresenter extends AdminPresenter
      */
     public function processImageForm(Form $form, $values)
     {
-
+        $this->activeTab = 1;
         $file = $values['image'];
 
         if($file->isOk() AND $file->isImage()) {
@@ -745,6 +743,7 @@ class SignalsPresenter extends AdminPresenter
     {
         // getting values
         $values = $form->form->getValues();
+        $this->activeTab = 1;
 
         // adjusting values
 

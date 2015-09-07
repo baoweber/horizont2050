@@ -65,6 +65,8 @@ class Signals extends \DivineModel
             $output = $this->addAcknowledgements($output);
         }
 
+        $output = $this->calculateRelevance($output);
+
         return $output;
     }
 
@@ -80,13 +82,14 @@ class Signals extends \DivineModel
             $query[] = array('public%i' => 1);
         }
 
-
         $output = $this->db->fetchAll($query);
 
         // dding acknowledgements to each item
         if (isset($output) && $withAcknowledgements) {
             $output = $this->addAcknowledgements($output);
         }
+
+        $output = $this->calculateRelevance($output);
 
         return $output;
     }
@@ -166,6 +169,48 @@ class Signals extends \DivineModel
         }
 
         return $output;
+    }
+
+    private function calculateRelevance($output)
+    {
+        foreach($output as $item) {
+           if(isset($item->relevance) && isset($item->timeframe)) {
+               $item = $this->getRelevanceStatus($item);
+           }
+        }
+
+        return $output;
+
+    }
+
+    public function getRelevanceStatus($item)
+    {
+        $relevance = $item->relevance;
+        if(in_array(intval($item->relevance), array(1,2,3)) && in_array(intval($item->timeframe), array(1,2,3))) {
+            $relevance = intval($item->relevance) * intval($item->timeframe);
+        }
+
+        Debugger::barDump(array($item->relevance, $item->timeframe));
+
+        switch ($relevance) {
+            case (1) :
+                $item->relevance = 'Z';
+                break;
+            case (2) :
+                $item->relevance = 'Z';
+                break;
+            case (4):
+                $item->relevance = 'O';
+                break;
+            case (6):
+                $item->relevance = 'C';
+                break;
+            case (9):
+                $item->relevance = 'C';
+                break;
+        }
+
+        return $item->relevance;
     }
 }
 

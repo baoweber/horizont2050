@@ -47,3 +47,10 @@ h3.search-title {
 a {
   color: darkblue;
 }
+.signal-attributes {
+  padding-top: 1.5em;
+}
+
+.signal-attributes div {
+  margin-bottom: 1em;
+}

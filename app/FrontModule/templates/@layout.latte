@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<header>
+<header class="hide-for-small">
     <div class="row">
         <div class="small-12 medium-4 large-4 columns">
             <a n:href="Homepage:default">
@@ -35,29 +35,29 @@
     </div>
 </header>
 
-<div class="row">
+<div class="row hide-for-small">
     <div class="small-12 medium-12 large-12 columns">
         <div class="divider"></div>
     </div>
 </div>
 
 <div class="row" ng-controller="signalListCtrl">
-    {block leftBar}
-    <div class="small-12 medium-3 large-3 columns" id="left-bar">
-
-        {block leftBarContent}
-
-        {/block}
-
-        <div style="color: grey; font-size: 0.9em; line-height: 1.3em;">
-            {if isset($acknowledgement)}{$acknowledgement}<br><br>{/if}
-            {* Image courtesy of [name of the image creator] at FreeDigitalPhotos.net *}
-            &copy; COŽP UK
-        </div>
-    </div>
-    {/block}
-
     {include #content}
+
+    {block leftBar}
+        <div class="small-12 medium-pull-9 medium-3 columns" id="left-bar">
+
+            {block leftBarContent}
+
+            {/block}
+
+            <div style="color: grey; font-size: 0.9em; line-height: 1.3em;">
+                {if isset($acknowledgement)}{$acknowledgement}<br><br>{/if}
+                {* Image courtesy of [name of the image creator] at FreeDigitalPhotos.net *}
+                &copy; COŽP UK
+            </div>
+        </div>
+    {/block}
 </div>
 
 <div id="footer" style="height: 4em;">&nbsp;</div>

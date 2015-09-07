@@ -113,6 +113,8 @@ class SignalPresenter extends FrontPresenter
         // get cources Arrags
         $this->getSourcesArrays($sources);
 
+        $signal->relevance = $this->signals->getRelevanceStatus($signal);
+
         // processing texts for sources
         $signal->description        = $this->processSources($signal->description);
         $signal->impact             = $this->processSources($signal->impact);

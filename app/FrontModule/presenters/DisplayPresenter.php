@@ -32,6 +32,9 @@ class DisplayPresenter extends FrontPresenter
         if(!$id || $id == $this->context->parameters['homepageSlug']) {
             $this->redirect('Homepage:');
         }
+        if($id == 'tym') {
+            $this->redirect('Contacts:');
+        }
 
         $page = $this->pages->getSingleBySlug($id);
 

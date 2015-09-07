@@ -1,7 +1,7 @@
 {* This is the welcome page, you can delete it *}
 
 {block content}
-    <div class="small-12 medium-9 large-9 columns main-detail" id="main">
+    <div class="small-12 medium-9 medium-push-3 large-push-3 columns main-detail" id="main">
 
         <article class="row database-item primary" >
             <div class="large-3 columns" class="cover-image">
@@ -29,45 +29,61 @@
 
                 <div class="divider"></div>
 
+                <div class="row signal-attributes">
+                    <div class="small-12 medium-6 columns">
+                        <strong>Tematické oblasti:</strong> &nbsp;&nbsp;
+                        {$spaces[$signal->spaces_id]} <i class="fa fa-question-circle has-tip" style="color: #706F6F;" data-tooltip aria-haspopup="true" title="Tooltips are awesome, you should totally use them!"></i>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <strong>Typ události:</strong> &nbsp;&nbsp;
+                        {$event_types[$signal->event_types_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title="Tooltips are awesome, you should totally use them!"></i>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <strong>Klasifikace:</strong> &nbsp;&nbsp;
+                        {$impacts[$signal->impacts_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title="Tooltips are awesome, you should totally use them!"></i>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <strong>Rozsah:</strong> &nbsp;&nbsp;
+                        {$scales[$signal->scales_id]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title="Tooltips are awesome, you should totally use them!"></i>
+                    </div>
+
+                    <div class="small-12 medium-12 columns" n:if="count($strategies)">
+                        <strong>Souvislost s národními strategickými dokumenty: <i class="fa fa-question-circle" style="color: #706F6F;"></i></strong>
+
+                        <ul>
+                            <li n:foreach="$strategies as $strategy">
+                                <a style="color: rgb(34,34,34)"href="{$strategy->url}">{$strategy->name}</a>
+                                <a href="{$strategy->url}" target="_blank" style="margin-left: 0.5em;"><i class="fa fa-external-link"></i></a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                {*
                 <table class="plain" width="100%">
                     <tbody>
                         <tr>
-                            <th width="25%">Tematické oblasti: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
-                            <td width="25%">{$spaces[$signal->spaces_id]}</td>
-                            <th width="25%">Typ události: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
-                            <td width="25%">{$event_types[$signal->event_types_id]}</td>
+                            <th width="50%"></th>
+                            <td width="55%"></td>
+                            <th width="55%"></th>
+                            <td width="25%"></td>
                         </tr>
                         <tr>
-                            <th>Klasifikace: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
-                            <td>{$impacts[$signal->impacts_id]}</td>
-                            <th>Rozsah: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
-                            <td>{$scales[$signal->scales_id]}</td>
+                            <th></th>
+                            <td></td>
+                            <th></th>
+                            <td></td>
                         </tr>
+                        <!--
                         <tr>
-                            <th>Časový horizont: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
+                            <th> <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
                             <td>{$signal->timeframe}</td>
                         </tr>
+                        -->
                     </tbody>
                 </table>
-
-
-                <table class="plain" width="100%"  n:if="count($strategies)">
-                    <tbody>
-                        <tr>
-                            <th colspan="4">Souvislost s národními strategickými dokumenty: <i class="fa fa-question-circle" style="color: #706F6F;"></i></th>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <ul>
-                                    <li n:foreach="$strategies as $strategy">
-                                        <a style="color: rgb(34,34,34)"href="{$strategy->url}">{$strategy->name}</a>
-                                        <a href="{$strategy->url}" target="_blank" style="margin-left: 0.5em;"><i class="fa fa-external-link"></i></a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                *}
             </div>
 
         </article>
