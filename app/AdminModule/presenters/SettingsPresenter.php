@@ -30,7 +30,7 @@ class SettingsPresenter extends AdminPresenter
         $this->menuItem = $this->getName();
 
         // vytvoří instanci služby a uloží do vlastnosti presenteru
-        $this->settings     = $this->context->settings;
+        $this->settings     = $this->context->getService('settings');
 
     }
 

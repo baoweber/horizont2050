@@ -28,7 +28,7 @@ class EventTypesPresenter extends AdminPresenter
         $this->menuItem = 'Settings';
 
         // vytvoří instanci služby a uloží do vlastnosti presenteru
-        $this->eventTypes = $this->context->eventTypes;
+        $this->eventTypes = $this->context->getService('eventTypes');
 
     }
 

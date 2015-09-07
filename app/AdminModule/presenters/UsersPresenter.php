@@ -33,7 +33,7 @@ class UsersPresenter extends AdminPresenter
         $this->menuItem = 'Users';
 
         // assign services
-        $this->users = $this->context->users;
+        $this->users = $this->context->getService('users');
 
         if(!$this->user->isAllowed($this->name)) {
             die("Insufficient priviledges.");

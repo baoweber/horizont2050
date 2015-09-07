@@ -61,14 +61,14 @@ class SignalsPresenter extends AdminPresenter
         $this->menuItem = $this->getName();
 
         // vytvoří instanci služby a uloží do vlastnosti presenteru
-        $this->signals = $this->context->signals;
-        $this->spaces = $this->context->spaces;
-        $this->eventTypes = $this->context->eventTypes;
-        $this->keywords = $this->context->keywords;
-        $this->sources = $this->context->sources;
-        $this->challenges = $this->context->challenges;
-        $this->strategies = $this->context->strategies;
-        $this->acknow = $this->context->acknowledgements;
+        $this->signals = $this->context->getService('signals');
+        $this->spaces = $this->context->getService('spaces');
+        $this->eventTypes = $this->context->getService('eventTypes');
+        $this->keywords = $this->context->getService('keywords');
+        $this->sources = $this->context->getService('sources');
+        $this->challenges = $this->context->getService('challenges');
+        $this->strategies = $this->context->getService('strategies');
+        $this->acknow = $this->context->getService('acknowledgements');
 
         $this->impacts = array(
             1 => 'Nežádoucí',

@@ -28,7 +28,7 @@ class ChallengesPresenter extends AdminPresenter
         $this->menuItem = $this->getName();
 
         // vytvoří instanci služby a uloží do vlastnosti presenteru
-        $this->challenges = $this->context->challenges;
+        $this->challenges = $this->context->getService('challenges');
 
     }
 

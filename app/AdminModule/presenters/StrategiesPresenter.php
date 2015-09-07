@@ -30,7 +30,7 @@ class StrategiesPresenter extends AdminPresenter
         $this->menuItem = $this->getName();
 
         // vytvoří instanci služby a uloží do vlastnosti presenteru
-        $this->strategies = $this->context->strategies;
+        $this->strategies = $this->context->getService('strategies');
 
     }
 

@@ -29,7 +29,7 @@ class SpacesPresenter extends AdminPresenter
         $this->menuItem = 'Settings';
 
         // vytvoří instanci služby a uloží do vlastnosti presenteru
-        $this->spaces = $this->context->spaces;
+        $this->spaces = $this->context->getService('spaces');
 
     }
 
