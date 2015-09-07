@@ -19,7 +19,10 @@
 
             </div>
 
-            <div class="corner"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
+            <div class="corner" n:if="$signal->categories_id == 1"><img src="{$baseUrl}/images/corner-intensive_yellow.png" alt="Signal corner decoration" /></div>
+            <div class="corner" n:if="$signal->categories_id == 2"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
+            <div class="corner" n:if="$signal->categories_id == 3"><img src="{$baseUrl}/images/corner-intensive_green.png" alt="Signal corner decoration" /></div>
+
             <div class="highlight"><span class="number">{$signal->relevance}</span><span class="percent">%</span></div>
 
             <div class="large-12 columns">

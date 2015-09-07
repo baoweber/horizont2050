@@ -21,6 +21,14 @@
 
     </div>
 
-    <div class="corner"><img src="/images/corner-intensive.png" alt="Signal corner decoration" /></div>
-    <!--<div class="highlight"><span class="number">{$signal->relevance}</span><span class="percent">%</span>-</div>-->
-
+    <div ng-switch on="signal.categories_id">
+        <div ng-switch-when="1">
+            <div class="corner"><img src="/images/corner-intensive_yellow.png" alt="Signal corner decoration" /></div>
+        </div>
+        <div ng-switch-when="3">
+            <div class="corner"><img src="/images/corner-intensive_green.png" alt="Signal corner decoration" /></div>
+        </div>
+        <div ng-switch-default>
+            <div class="corner"><img src="/images/corner-intensive.png" alt="Signal corner decoration" /></div>
+        </div>
+    </div>

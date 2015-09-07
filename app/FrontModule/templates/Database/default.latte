@@ -1,42 +1,10 @@
 {* This is the welcome page, you can delete it *}
 
 {block content}
-<div class="small-12 medium-9 large-9 columns main-database-list" id="main">
+<div class="small-12 medium-9 large-9 columns main-database-list" id="main" n:syntax="off">
 
     <article signal-list-item ng-repeat="item in signals | filter: advSearch | orderBy:'name'" signal="item" class="row database-item"></article>
-    {*
-    <article class="row database-item" n:foreach="$signals as $signal">
-        <div class="large-3 columns" class="cover-image">
-            {if $signal->image}
-            <a n:href="Signal:default $signal->id">
-                {var $acknowledgement = isset($signal->acknowledgements[0]) ? 'Courtesy of ' . $signal->acknowledgements[0]->author . ' from the site ' . $signal->acknowledgements[0]->site .  '.' : ''}
-                {!$signal->image|thumber:200:200:crop:$acknowledgement}
-            </a>
-            {/if}
-        </div>
-        <div class="large-9 columns">
 
-            <h2>
-                <i class="h2-arrow">
-                    <a n:href="Signal:default $signal->id"><img src="{$baseUrl}/images/h2-arrow.png" alt="arrow"/></a>
-                </i>
-                <a n:href="Signal:default $signal->id">{$signal->name}</a>
-            </h2>
-
-            <div class="divider"></div>
-
-            <p>
-                {!$signal->title}
-            </p>
-
-        </div>
-
-
-        <div class="corner"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
-        <div class="highlight"><span class="number"><!--{$signal->relevance}</span><span class="percent">%</span>--></div>
-
-    </article>
-    *}
 </div>
 {/block}
 
