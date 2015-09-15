@@ -49,7 +49,7 @@ class SignalsPresenter extends AdminPresenter
 
     private $signalId;
 
-    private $impacts, $scales;
+    private $impacts, $scales, $timeframe;
 
     /**
      * Startup method of the presenter
@@ -83,6 +83,13 @@ class SignalsPresenter extends AdminPresenter
             2 => 'Evropský',
             3 => 'ČR',
             4 => 'Lokální'
+        );
+
+        $this->timeframe = array(
+            1 => 'krátkodobý (do 5 let, tj. 2020)',
+            2 => 'střednědobý (do 15 let, tj. 2030)',
+            3 => 'dlouhodobý (do 35 let, tj. 2050)',
+            4 => 'kdykoli (divoké karty) '
         );
 
         $this->template->event_types = $this->eventTypes->getPairs('id', 'label');
@@ -459,8 +466,9 @@ class SignalsPresenter extends AdminPresenter
             ->setRequired('Vyplňte prosím rozsah události.')
             ->setPrompt('vyberte prosím rozsah události');
 
-
-        $form->addText('timeframe', 'Časový horizont');
+        $form->addSelect('timeframe', 'Časový horizont', $this->timeframe)
+            ->setRequired('Vyplňte prosím časový horizont.')
+            ->setPrompt('vyberte prosím časový horizont události');
 
         $form->addText('ptree', 'PearlTree odkaz');
 

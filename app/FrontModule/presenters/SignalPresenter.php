@@ -40,7 +40,7 @@ class SignalPresenter extends FrontPresenter
 
     private $impacts, $scales;
 
-    private $sourcesIds, $sourcesTexts;
+    private $sourcesIds, $sourcesTexts, $timeframe;
 
     protected function startup()
     {
@@ -73,10 +73,18 @@ class SignalPresenter extends FrontPresenter
             4 => 'Lokální'
         );
 
+        $this->timeframe = array(
+            1 => 'Krátkodobý (do 5 let, tj. 2020)',
+            2 => 'Střednědobý (do 15 let, tj. 2030)',
+            3 => 'Dlouhodobý (do 35 let, tj. 2050)',
+            4 => 'Kdykoli'
+        );
+
         $this->template->event_types = $this->eventTypes->getPairs('id', 'label');
         $this->template->spaces = $this->spaces->getPairs('id', 'label');
         $this->template->impacts = $this->impacts;
         $this->template->scales = $this->scales;
+        $this->template->timeframe = $this->timeframe;
 
     }
 
