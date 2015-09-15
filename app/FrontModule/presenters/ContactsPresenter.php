@@ -40,7 +40,8 @@ class ContactsPresenter extends FrontPresenter
         // set active page
         $this['topMenu']->setActive('tym');
 
-        $this->template->left_menu  = $this->pages->getAll($params);
+        $this->template->left_menu = $this->pages->getAll($params);
+        $this->template->dana = $this->pages->getSingleBySlug('dana-kapitulcinova');
 
     }
 }
