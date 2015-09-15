@@ -29,6 +29,7 @@ class News extends \DivineModel
             'slug'              => '%s',
             'text'              => '%s',
             'active'            => '%i',
+            'linked'            => '%i',
             'redirect'          => '%s'
         );
     }

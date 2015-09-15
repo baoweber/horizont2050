@@ -43,82 +43,13 @@ class NewsPresenter extends AdminPresenter
     {
 
         $params = array(
-            'orderby' => '`created` ASC'
+            'orderby' => '`created` DESC'
         );
 
         $news = $this->news->getAll($params);
 
         // assigning the variable to a template
         $this->template->news          = $news;
-    }
-
-    /**
-     * Renders a view of specified document
-     *
-     * @param int $id
-     */
-    public function renderView($id)
-    {
-
-        $signal = $this->signals->getSingle($id);
-
-        // debug
-        Debugger::barDump($signal, "Signals");
-
-        // assigning id
-        $this['keywordsForm']->setDefaults(array('signals_id' => $signal->id));
-        $this['sourcesForm']->setDefaults(array('signals_id' => $signal->id));
-        $this['strategiesForm']->setDefaults(array('signals_id' => $signal->id));
-        $this['challengesForm']->setDefaults(array('signals_id' => $signal->id));
-
-        //getting assigned keywords
-        $assigned = $this->keywords->getAssignedKeywords($signal->id);
-
-        //getting assigned strategies
-        $strategies = $this->strategies->getAssignedStrategies($signal->id);
-
-        //getting assigned challenges
-        $challenges = $this->challenges->getAssignedChallenges($signal->id);
-
-        // getting sources
-        $sources = $this->sources->getAllSignalSources($signal->id);
-
-        // assigning the variable to a template
-        $this->template->signal = $signal;
-        $this->template->assignedKeywords = $assigned;
-        $this->template->sources = $sources;
-        $this->template->strategies = $strategies;
-        $this->template->challenges = $challenges;
-    }
-
-    /**
-     * Moves page up by on in it's category order
-     *
-     * @param int $id
-     */
-    public function actionMoveUp($id)
-    {
-
-        if (isset($id) && $id) {
-            $this->news->moveUp($id);
-        }
-
-        $this->redirect('default');
-    }
-
-    /**
-     * Moves page down by on in it's category order
-     *
-     * @param int $id
-     */
-    public function actionMoveDown($id)
-    {
-
-        if (isset($id) && $id) {
-            $this->news->moveDown($id);
-        }
-
-        $this->redirect('default');
     }
 
     /**
@@ -214,12 +145,13 @@ class NewsPresenter extends AdminPresenter
         $form->addText('slug', 'URL dokumentu');
 
         $form->addCheckbox('active', 'Aktivní');
+        $form->addCheckbox('linked', 'Proklik na delší text');
 
         $form->addText('redirect', 'Přesměrování na jinou adresu');
 
         $form->addTextarea('perex', 'Shrnutí')
             ->getControlPrototype()
-            ->class('perex-text');;
+            ->class('perex-text');
 
         $form->addTextArea('text', 'text stránky')
             ->getControlPrototype()

@@ -33,7 +33,10 @@
                 <div class="divider" style="margin: 1.3em 0; padding: 0;"></div>
 
                 {*<h3>{$item->menutitle}</h3>*}
-                <em>{$item->date|date:"%d.%m.%Y"} |</em> {!$item->perex}
+                <em>{$item->date|date:"%d.%m.%Y"} |</em>
+                <a n:tag-if="$item->linked" href="/novinky/{$item->slug}">
+                {!$item->perex}
+                </a>
 
             </div>
 

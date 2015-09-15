@@ -1,0 +1,30 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+<div class="small-12 medium-9 medium-push-3 large-push-3 columns main-text" id="main">
+    <article>
+        {if $page->slug != 'uvodni-strana'}
+        <h1 n:if="$page->title">{$page->title}</h1>
+
+        {!$page->text}
+        {else}
+        <p style="padding-top: 2em; text-align: center;"><strong>Texty na tomto webu se připravují.</strong> <br>Můžete se zatím podívat na vznikající <a href="/database/">databázi slabých signálů</a>.</p>
+        {/if}
+    </article>
+</div>
+{/block}
+
+{block leftBarContent}
+<nav class="left-menu-text">
+</nav>
+{/block}
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}
+
+
