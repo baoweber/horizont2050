@@ -34,9 +34,8 @@
 
                 {*<h3>{$item->menutitle}</h3>*}
                 <em>{$item->date|date:"%d.%m.%Y"} |</em>
-                <a n:tag-if="$item->linked" href="/novinky/{$item->slug}">
                 {!$item->perex}
-                </a>
+                <a n:if="$item->linked" href="/novinky/{$item->slug}"><img src="{$baseUrl}/images/arrow-right.png" style="height: 1em; margin-left: 0.5em;" alt="arrow"></a>
 
             </div>
 
