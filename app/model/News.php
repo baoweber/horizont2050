@@ -48,6 +48,9 @@ class News extends \DivineModel
     public function getHotNews($limit = 3)
     {
         return $this->getAll([
+            'where' => array(
+                'active%i' => 1
+            ),
             'limit' => $limit,
             'orderby' => '`date` DESC'
         ]);
