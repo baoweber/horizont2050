@@ -175,7 +175,7 @@ class Signals extends \DivineModel
     {
         foreach($output as $item) {
            if(isset($item->relevance) && isset($item->timeframe)) {
-               $item = $this->getRelevanceStatus($item);
+               $item->relevance = $this->getRelevanceStatus($item);
            }
         }
 

@@ -14,10 +14,10 @@ use Nette\Utils\Html;
 class DatabasePresenter extends FrontPresenter
 {
 
-    /** @var \Signals */
+    /** @var \App\Models\Signals */
     private $signals;
 
-    /** @var \Pages */
+    /** @var \App\Models\Pages */
     private $pages;
 
     protected function startup()
