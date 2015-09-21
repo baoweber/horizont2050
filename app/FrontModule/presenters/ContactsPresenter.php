@@ -29,19 +29,20 @@ class ContactsPresenter extends FrontPresenter
 
     public function renderDefault($id = NULL)
     {
-        $page = $this->pages->getSingleBySlug('uvodni-strana');
-
-        if($page->parent) {
-            $params['where']['parent'] = $page->parent;
-        } else {
-            $params['where']['parent'] = $page->id;
-        }
+        $page = $this->pages->getSingleBySlug('tym');
 
         // set active page
         $this['topMenu']->setActive('tym');
 
+        $staff['mirek'] = $this->pages->getSingleBySlug('miroslav-havranek');
+        $staff['mirek']['photo'] = 'havranek.jpg';
+
+        $staff['dana'] = $this->pages->getSingleBySlug('dana-kapitulcinova');
+        $staff['dana']['photo'] = 'kapitulcinova.png';
+
         $this->template->left_menu = $this->pages->getAll($params);
-        $this->template->dana = $this->pages->getSingleBySlug('dana-kapitulcinova');
+        $this->template->staff = $staff;
+        $this->template->page = $page;
 
     }
 }

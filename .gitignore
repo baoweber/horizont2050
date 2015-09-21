@@ -10,5 +10,7 @@ www/thumbs/*
 !.htaccess
 !web.config
 app/config/config.local.neon
+phploy
+deploy.ini
 
 docs

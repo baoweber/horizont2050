@@ -4,16 +4,16 @@
 <div class="small-12 medium-9 medium-push-3 large-push-3 columns  main-text" id="main">
 
 
-        <article style="margin-bottom: 1.5em; padding: 3em 2em 2em 3em;">
+        <article style="margin-bottom: 1.5em; padding: 3em 2em 2em 3em;"  n:foreach="$staff as $item">
             <div class="row">
                 <div class="small-12 medium-4 columns">
-                    <img src="{$baseUrl}/images/kapitulcinova.png" style="border-radius: 5px;">
+                    <img src="{$baseUrl}/images/{$item->photo}" style="border-radius: 5px;">
                 </div>
 
                 <div class="small-12 medium-8 columns">
-                    <h2>{$dana->title}</h2>
+                    <h2>{$item->title}</h2>
 
-                    <p>{!$dana->text}</p>
+                    <p>{!$item->text}</p>
                 </div>
             </div>
         </article>
@@ -24,14 +24,7 @@
 {block leftBarContent}
 <nav class="left-menu-text">
 
-    {foreach $left_menu as $item}
-        <div class="menu-item {if isset($page->id) && $item->id == $page->id}active{/if}">
-            <div class="menu-image"></div>
-            <a n:href="Display:default $item->slug">
-                {$item->menutitle}
-            </a>
-        </div>
-    {/foreach}
+    {!$page->text}
 
 </nav>
 
