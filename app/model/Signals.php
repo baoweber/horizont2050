@@ -195,19 +195,22 @@ class Signals extends \DivineModel
 
         switch ($relevance) {
             case (1) :
-                $item->relevance = 'Z';
+                $item->relevance = '1';
                 break;
             case (2) :
-                $item->relevance = 'Z';
+                $item->relevance = '1';
+                break;
+            case (3) :
+                $item->relevance = '2';
                 break;
             case (4):
-                $item->relevance = 'O';
+                $item->relevance = '2';
                 break;
             case (6):
-                $item->relevance = 'C';
+                $item->relevance = '3';
                 break;
             case (9):
-                $item->relevance = 'C';
+                $item->relevance = '3';
                 break;
         }
 

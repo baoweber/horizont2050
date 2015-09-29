@@ -23,6 +23,9 @@ class HomepagePresenter extends FrontPresenter
     /** @var \App\Models\News */
     private $news;
 
+    /** @var \App\Models\Keywords */
+    private $keywords;
+
     protected function startup()
     {
         parent::startup();
@@ -32,6 +35,7 @@ class HomepagePresenter extends FrontPresenter
         $this->pages = $this->context->getService('pages');
         $this->signals = $this->context->getService('signals');
         $this->news = $this->context->getService('news');
+        $this->keywords = $this->context->getService('keywords');
 
     }
 
@@ -63,8 +67,40 @@ class HomepagePresenter extends FrontPresenter
         $this['topMenu']->setActive('uvodni-strana');
         $news = $this->news->getHotNews(5);
 
+        $keywods = $this->keywords->getAllCount();
+
+        $max = 0;
+        $min = 10000000;
+        foreach($keywods as $item) {
+            if($item->count > $max) {
+                $max = $item->count;
+            }
+            if($item->count < $min && $item->count != 0) {
+                $min = $item->count;
+            }
+        }
+
+        $values = array(
+            'min' => $min,
+            'max' => $max,
+            'mean' => ($min + $max) / 2
+        );
+
+        foreach($keywods as $item) {
+            if($item->count > $values['mean']) {
+                $item->fontSize = '1.6em';
+            } elseif($item->count < $values['mean']) {
+                $item->fontSize = '0.9em';
+            } else {
+                $item->fontSize = '1.3em';
+            };
+        }
+
+        Debugger::barDump($values, 'VALUES');
+
         $this->template->page       = $page;
         $this->template->signals    = $signals;
         $this->template->news       = $news;
+        $this->template->keywords   = $keywods;
     }
 }

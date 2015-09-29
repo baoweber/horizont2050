@@ -128,4 +128,18 @@ class Keywords extends \DivineModel
 
     }
 
+    public function getAllCount($params = false)
+    {
+        $keywords  = $this->getAll($params);
+
+        foreach($keywords as $item) {
+            $where = array(
+                'keywords_id%i' => $item->id
+            );
+            $item->count = $this->db->fetchSingle("SELECT COUNT(`id`) FROM [:pref:signals_keywords] WHERE %and", $where);
+        }
+
+        return $keywords;
+    }
+
 }

@@ -27,6 +27,10 @@ app.controller("signalListCtrl", function($scope, $http) {
             return false;
         }
 
+        if ( !_self.filterOneInArray($scope.search.relevance, item.relevance) ) {
+            return false;
+        }
+
         return true;
     };
 

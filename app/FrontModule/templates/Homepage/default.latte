@@ -52,7 +52,12 @@
                 </article>
             </div>
             <div class="small-12 medium-4 columns ">
-                <article style="padding: 1.5em;">
+                <article class="text-center">
+                    <span n:foreach="$keywords as $item" n:if="$item->count != 0" style="margin-right: 0.75em; margin-left: 0.75em; font-size: {!$item->fontSize}">{$item->label}</span>
+                </article>
+            </div>
+            <div class="small-12 medium-4 columns ">
+                <article style="">
                     <h3 style="font-size: 1.4em;">O tomto webu</h3>
 
                     Cílem těchto stránek je poskytnout platformu a softwarové zázemí pro sledování horizontu (horizon scanning) v oblasti životního prostředí formou identifikace slabých signálů a divokých karet, které mohou významně ovlivnit vývoj (nejen) životního prostředí v ČR. Webové stránky <strong>Horizont 2050</strong> vznikly za jako přímý výstup projektu MESENFOR (Methods for strategic environmental foresight) Technologické Agentury ČR. Hlavním nositelem projektu je Centrum pro otázky životního prostředí Univerzity Karlovy.
