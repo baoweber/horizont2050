@@ -18,10 +18,13 @@
                     {!$signal->perex}
 
             </div>
-
+            {*
             <div class="corner" n:if="$signal->categories_id == 1"><img src="{$baseUrl}/images/corner-intensive_yellow.png" alt="Signal corner decoration" /></div>
             <div class="corner" n:if="$signal->categories_id == 2"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
             <div class="corner" n:if="$signal->categories_id == 3"><img src="{$baseUrl}/images/corner-intensive_green.png" alt="Signal corner decoration" /></div>
+            *}
+
+            <div class="corner"><img src="{$baseUrl}/images/corner-intensive.png" alt="Signal corner decoration" /></div>
 
             <div class="highlight"><span class="number">{$signal->relevance}</span><span class="percent">%</span></div>
 
@@ -290,13 +293,18 @@
 {block leftBarContent}
 
     <div style="line-height: 1.2em;">
-        <span style="font-size: 0.9em; color: #666666">Vytvořeno:</span><br>
+        <h2 style="font-size: 0.9em; color: #666666">Vytvořeno:</h2>
         {$signal->user_create|date:"%d.%m.%Y"}
     </div>
 
     <div style="line-height: 1.2em; margin-top: 1em;">
-        <span style="font-size: 0.9em; color: #666666">Poslední úprava:</span><br>
+        <h2 style="font-size: 0.9em; color: #666666">Poslední úprava:</h2>
         {$signal->user_update|date:"%d.%m.%Y"}
+    </div>
+
+    <div style=" margin-top: 1em;">
+        <h2 style="font-size: 0.9em; color: #666666">Klíčová slova:</h2>
+        <div n:foreach="$assignedKeywords as $item">{$item->label}</div>
     </div>
 
     <div class="divider" style="margin-top: 3em; margin-bottom: 1em;"></div>

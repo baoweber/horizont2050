@@ -38,6 +38,7 @@ class Signals extends \DivineModel
             'event_types_id'    => '%i',
             'spaces_id'         => '%i',
             'relevance'         => '%i',
+            'probability'       => '%i',
             'impacts_id'        => '%i',
             'scales_id'         => '%i',
             'image_path'        => '%s',
@@ -174,7 +175,7 @@ class Signals extends \DivineModel
     private function calculateRelevance($output)
     {
         foreach($output as $item) {
-           if(isset($item->relevance) && isset($item->timeframe)) {
+           if(isset($item->relevance) && isset($item->probability)) {
                $item->relevance = $this->getRelevanceStatus($item);
            }
         }
@@ -186,11 +187,11 @@ class Signals extends \DivineModel
     public function getRelevanceStatus($item)
     {
         $relevance = $item->relevance;
-        if(in_array(intval($item->relevance), array(1,2,3)) && in_array(intval($item->timeframe), array(1,2,3))) {
-            $relevance = intval($item->relevance) * intval($item->timeframe);
+        if(in_array(intval($item->relevance), array(1,2,3)) && in_array(intval($item->probability), array(1,2,3))) {
+            $relevance = intval($item->relevance) * intval($item->probability);
         }
 
-        Debugger::barDump(array($item->relevance, $item->timeframe));
+        Debugger::barDump(array($item->relevance, $item->probability));
 
         switch ($relevance) {
             case (1) :

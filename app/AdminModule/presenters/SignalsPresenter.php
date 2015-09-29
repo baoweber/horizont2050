@@ -447,7 +447,9 @@ class SignalsPresenter extends AdminPresenter
 
         $form->addTextArea('perex', 'Shrnutí');
 
-        $form->addText('relevance', 'Relevance');
+        $form->addText('relevance', 'Závažnost');
+
+        $form->addText('probability', 'Pravděpodobnost');
 
         $impact = $this->impacts;
 

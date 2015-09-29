@@ -34,7 +34,7 @@ class SignalsPresenter extends ApiPresenter
     {
         $thumber = new \ThumberHelper($this->context);
 
-        $fields = array('id', 'name', 'title', 'user_update', 'user_create', 'image_path', 'categories_id');
+        $fields = array('id', 'name', 'title', 'user_update', 'user_create', 'image_path', 'categories_id', 'relevance', 'probability');
         $signals = $this->signals->getAllSelectiveFields($fields, true, true);
 
         foreach($signals as $signal) {
