@@ -139,6 +139,11 @@ class SignalsPresenter extends AdminPresenter
         // getting the signal from the DB
         $data = $this->signals->getSingle($id);
 
+        // timeframe - DIRTY FIX
+        if(!in_array($data->timeframe, array(1,2,3,4))) {
+            unset($data->timeframe);
+        }
+
         // adjusting dates
         $data->user_create = date('Y-m-d', strtotime($data->user_create));
         $data->user_update = date('Y-m-d', strtotime($data->user_update));
