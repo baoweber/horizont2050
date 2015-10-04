@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="large-12 columns">
-            <h1>Správa Grand Challenges</h1>
+            <h1>Správa tematických oblastí</h1>
         </div>
     </div>
 
@@ -18,7 +18,7 @@
     <div class="row">
         <div class="large-12 columns">
             <p>
-                <a n:href="insert" class="small button secondary inline">vložit novou grand challenge</a>
+                <a n:href="insert" class="small button secondary inline">vložit novou tematickou oblast</a>
             </p>
         </div>
     </div>
@@ -42,12 +42,12 @@
                         <td class="column-grey">{$item->updated|date:"d.m.Y"}</td>
                         <td class="manage-icons" n:if="$user->isAllowed('Admin:Spaces', 'update')">
                             <a n:href="update $item->id">
-                                <i class="foundicon-edit tip-left" data-tooltip title="upravit challenge"></i>
+                                <i class="foundicon-edit tip-left" data-tooltip title="upravit oblast"></i>
                             </a>
                         </td>
                         <td class="manage-icons" n:if="$user->isAllowed('Admin:EventTypes', 'delete')">
                             <a n:href="delete $item->id">
-                                <i class="foundicon-remove tip-left" data-tooltip title="smazat challenge"></i>
+                                <i class="foundicon-remove tip-left" data-tooltip title="smazat oblast"></i>
                             </a>
                         </td>
                     </tr>
