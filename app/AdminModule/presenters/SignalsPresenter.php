@@ -74,7 +74,7 @@ class SignalsPresenter extends AdminPresenter
             1 => 'Nežádoucí',
             2 => 'Žádoucí',
             3 => 'Ambivalentní',
-            4 => 'Nejistá',
+            4 => 'Nejistý',
             5 => 'Nezobrazovat'
         );
 
@@ -438,9 +438,11 @@ class SignalsPresenter extends AdminPresenter
         )->setRequired('Vyplňte prosím kategorii.')
             ->setPrompt('vyberte prosím kategorii');
 
+        /*
         $form->addSelect('spaces_id', 'Tematická oblast', $this->spaces->getPairs('id', 'label'))
             ->setRequired('Vyplňte prosím tematickou oblast.')
             ->setPrompt('vyberte prosím tematickou oblast');
+        */
 
         $form->addSelect('event_types_id', 'Typ události', $this->eventTypes->getPairs('id', 'label'))
             ->setRequired('Vyplňte prosím typ události.')
@@ -458,7 +460,7 @@ class SignalsPresenter extends AdminPresenter
 
         $impact = $this->impacts;
 
-        $form->addSelect('impacts_id', 'Klasifikace', $impact)
+        $form->addSelect('impacts_id', 'Dopad signálu', $impact)
             ->setRequired('Vyplňte prosím klasifikaci události.')
             ->setPrompt('vyberte prosím klasifikaci události');
 

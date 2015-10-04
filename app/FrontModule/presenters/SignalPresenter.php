@@ -62,7 +62,7 @@ class SignalPresenter extends FrontPresenter
             1 => 'Nežádoucí',
             2 => 'Žádoucí',
             3 => 'Ambivalentní',
-            4 => 'Nejistá',
+            4 => 'Nejistý',
             5 => 'Nezobrazovat'
         );
 
