@@ -105,7 +105,6 @@ class Challenges extends \DivineModel
             $where
         );
 
-
         return $assigned;
     }
 

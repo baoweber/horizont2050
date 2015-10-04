@@ -141,6 +141,7 @@ class SignalPresenter extends FrontPresenter
         // debug output
         Debugger::barDump($signal, 'SIGNAL');
         Debugger::barDump($sources, 'SOURCES');
+        Debugger::barDump($challenges, 'CHALLENGES');
 
         //$this->template->left_menu = array();
 

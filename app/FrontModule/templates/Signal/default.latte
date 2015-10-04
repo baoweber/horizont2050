@@ -34,14 +34,6 @@
 
                 <div class="row signal-attributes">
                     <div class="small-12 medium-6 columns">
-                        <strong>Tematické oblasti:</strong> &nbsp;&nbsp;
-                        {$spaces[$signal->spaces_id]} <i class="fa fa-question-circle has-tip" style="color: #706F6F;" data-tooltip aria-haspopup="true" title=""></i>
-                    </div>
-                    <div class="small-12 medium-6 columns">
-                        <strong>Typ události:</strong> &nbsp;&nbsp;
-                        {$event_types[$signal->event_types_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
-                    </div>
-                    <div class="small-12 medium-6 columns">
                         <strong>Klasifikace:</strong> &nbsp;&nbsp;
                         {$impacts[$signal->impacts_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
                     </div>
@@ -49,18 +41,29 @@
                         <strong>Rozsah:</strong> &nbsp;&nbsp;
                         {$scales[$signal->scales_id]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
                     </div>
-                    <div class="small-12 medium-12 columns">
+                    <div class="small-12 medium-6 columns">
                         <strong>Relevance:</strong> &nbsp;&nbsp;
                         {$relevanceArr[$signal->relevance]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
+                    </div>
+                    <div class="small-12 medium-6 columns">
+                        <strong>Typ události:</strong> &nbsp;&nbsp;
+                        {$event_types[$signal->event_types_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
                     </div>
                     <div class="small-12 medium-12 columns">
                         <strong>Časový horizont:</strong> &nbsp;&nbsp;
                         {$timeframe[$signal->timeframe]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
                     </div>
+                    <div class="small-12 medium-12 columns">
+                        <strong>Tematické oblasti:</strong> &nbsp;&nbsp;
+                        <ul>
+                            <li n:foreach="$challenges as $challenge">
+                                {*<a href="#">*}{$challenge->name}{*</a>*}
+                            </li>
+                        </ul>
+                    </div>
 
                     <div class="small-12 medium-12 columns" n:if="count($strategies)">
                         <strong>Souvislost s národními strategickými dokumenty: <i class="fa fa-question-circle" style="color: #706F6F;"></i></strong>
-
                         <ul>
                             <li n:foreach="$strategies as $strategy">
                                 <a style="color: rgb(34,34,34)"href="{$strategy->url}">{$strategy->name}</a>
