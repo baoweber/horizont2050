@@ -86,9 +86,9 @@ class SignalsPresenter extends AdminPresenter
         );
 
         $this->timeframe = array(
-            1 => 'krátkodobý (do 5 let, tj. 2020)',
-            2 => 'střednědobý (do 15 let, tj. 2030)',
-            3 => 'dlouhodobý (do 35 let, tj. 2050)',
+            1 => 'krátkodobý (do 2020)',
+            2 => 'střednědobý (do 2030)',
+            3 => 'dlouhodobý (do 2050)',
             4 => 'kdykoli (divoké karty) '
         );
 

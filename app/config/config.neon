@@ -15,6 +15,11 @@ parameters:
         2 : Webová stránka
         3 : Queer
 
+    relevance:
+        1 : Nízká
+        2 : Střední
+        3 : Vysoká
+
 php:
     date.timezone: Europe/Prague
     # zlib.output_compression: yes

@@ -74,9 +74,9 @@ class SignalPresenter extends FrontPresenter
         );
 
         $this->timeframe = array(
-            1 => 'Krátkodobý (do 5 let, tj. 2020)',
-            2 => 'Střednědobý (do 15 let, tj. 2030)',
-            3 => 'Dlouhodobý (do 35 let, tj. 2050)',
+            1 => 'Krátkodobý (do 2020)',
+            2 => 'Střednědobý (do 2030)',
+            3 => 'Dlouhodobý (do 2050)',
             4 => 'Kdykoli'
         );
 
@@ -136,6 +136,7 @@ class SignalPresenter extends FrontPresenter
         $this->template->strategies = $strategies;
         $this->template->challenges = $challenges;
         $this->template->signal = $signal;
+        $this->template->relevanceArr = $this->context->parameters['relevance'];
 
         // debug output
         Debugger::barDump($signal, 'SIGNAL');
