@@ -543,13 +543,13 @@ class SignalsPresenter extends AdminPresenter
         // adding input id
         $form->addHidden('id'); // (toto pridat)
 
-        $form->addTextArea('description', 'Definice (popis jevu)');
+        $form->addTextArea('description', 'Popis signálu');
 
-        $form->addTextArea('impact', 'Dopady na společnost a ŽP, co v ČR');
+        $form->addTextArea('drivers', 'Hnací síly');
 
-        $form->addTextArea('likelyhood', 'Pravděpodonost (stanitelnost)');
+        $form->addTextArea('impact', 'Dopady');
 
-        $form->addTextArea('drivers', 'Drives and inhibitors – co jev podporuje či znesnadňuje');
+        $form->addTextArea('likelyhood', 'Pravděpodonost');
 
         $form->addTextArea('recomendations', 'Doporučená opatření');
 
