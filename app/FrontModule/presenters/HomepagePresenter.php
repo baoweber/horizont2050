@@ -102,5 +102,7 @@ class HomepagePresenter extends FrontPresenter
         $this->template->signals    = $signals;
         $this->template->news       = $news;
         $this->template->keywords   = $keywods;
+
+        $this->getAcknowledgement($signals);
     }
 }

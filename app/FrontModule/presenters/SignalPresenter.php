@@ -137,6 +137,8 @@ class SignalPresenter extends FrontPresenter
         $this->template->challenges = $challenges;
         $this->template->signal = $signal;
         $this->template->relevanceArr = $this->context->parameters['relevance'];
+        $this->template->acknowledgement = isset($signal->acknowledgements[0]) ? 'The image is a courtesy of ' . $signal->acknowledgements[0]->author . ' from the site ' . $signal->acknowledgements[0]->site .  '.' : '';
+
 
         // debug output
         Debugger::barDump($signal, 'SIGNAL');

@@ -61,6 +61,9 @@ class SignalsPresenter extends ApiPresenter
                     'name' => $challenge->name
                 );
             }
+
+            // thumb acknowledgement
+            $signal->thumb_acknowledgement = isset($signal->acknowledgements[0]) ? 'The image is a Courtesy of ' . $signal->acknowledgements[0]->author . ' from the site ' . $signal->acknowledgements[0]->site .  '.' : '';
         }
 
         $this->payload->count = count($signals);
