@@ -40,6 +40,9 @@ class ContactsPresenter extends FrontPresenter
         $staff['dana'] = $this->pages->getSingleBySlug('dana-kapitulcinova');
         $staff['dana']['photo'] = 'kapitulcinova.png';
 
+        $staff['tereza'] = $this->pages->getSingleBySlug('tereza-ponocna');
+        $staff['tereza']['photo'] = 'ponocna.jpg';
+
         $this->template->left_menu = $this->pages->getAll($params);
         $this->template->staff = $staff;
         $this->template->page = $page;

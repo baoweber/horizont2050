@@ -54,3 +54,22 @@ a {
 .signal-attributes div {
   margin-bottom: 1em;
 }
+
+.keywords-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.keywords-list li{
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0.2em;
+}
+
+.keywords-list li label {
+}
+
+.keywords-list li input {
+  margin-bottom: 0.5em;
+}

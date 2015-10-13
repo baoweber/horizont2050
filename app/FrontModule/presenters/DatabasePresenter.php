@@ -20,12 +20,16 @@ class DatabasePresenter extends FrontPresenter
     /** @var \App\Models\Pages */
     private $pages;
 
+    /** @var \App\Models\Keywords */
+    private $keywords;
+
     protected function startup()
     {
         parent::startup();
 
         $this->signals = $this->context->getService('signals');
         $this->pages = $this->context->getService('pages');
+        $this->keywords = $this->context->getService('keywords');
 
         // set active page
         $this['topMenu']->setActive('database');
@@ -35,6 +39,19 @@ class DatabasePresenter extends FrontPresenter
     /* ----- Renders ---------------------------------------------------------------- */
 
     public function renderDefault()
+    {
+        $this->getSignals();
+    }
+
+    public function renderKeywords($selected = '')
+    {
+        $this->getSignals();
+        $keywords = $this->keywords->getPairs('id', 'label');
+        $this->template->keywords = $keywords;
+        $this->template->selected = $selected;
+    }
+
+    private function getSignals()
     {
         $params = array(
             'with-acknowledgements' => true,

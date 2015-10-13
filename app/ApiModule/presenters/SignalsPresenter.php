@@ -20,12 +20,16 @@ class SignalsPresenter extends ApiPresenter
     /** @var \App\Models\Challenges */
     private $challenges;
 
+    /** @var \App\Models\Keywords */
+    private $keywords;
+
     protected function startup()
     {
         parent::startup();
 
         $this->signals = $this->context->getService('signals');
         $this->challenges = $this->context->getService('challenges');
+        $this->keywords = $this->context->getService('keywords');
     }
 
     /* ----- Renders ---------------------------------------------------------------- */
@@ -60,6 +64,17 @@ class SignalsPresenter extends ApiPresenter
                     'id' => $challenge->challenges_id,
                     'name' => $challenge->name
                 );
+            }
+
+            // sssigning keywords
+            $keywords = $this->keywords->getAssignedKeywords($signal->id);
+            if($keywords) {
+                foreach($keywords as $item) {
+                    $signal->keywords[] = array(
+                        'id' => $item->keywords_id,
+                        'name' => $item->label
+                    );
+                }
             }
 
             // thumb acknowledgement

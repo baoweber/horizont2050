@@ -41,7 +41,9 @@
             </div>
             <div class="small-12 medium-4 columns ">
                 <article class="text-center">
-                    <span n:foreach="$keywords as $item" n:if="$item->count != 0" style="margin-right: 0.75em; margin-left: 0.75em; font-size: {!$item->fontSize}">{$item->label}</span>
+                    <span n:foreach="$keywords as $item" n:if="$item->count != 0" style="margin-right: 0.75em; margin-left: 0.75em; font-size: {!$item->fontSize}">
+                        <a n:href="Database:keywords $item->label" style="color: black;">{$item->label}</a>
+                    </span>
                 </article>
             </div>
             <div class="small-12 medium-4 columns news main-text">

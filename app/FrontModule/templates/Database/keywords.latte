@@ -1,0 +1,31 @@
+{* This is the welcome page, you can delete it *}
+
+{block content}
+<div class="small-12 medium-9 medium-push-3 large-push-3 columns main-database-list" id="main" n:syntax="off">
+
+    <article signal-list-item ng-repeat="item in signals | filter: advSearch | orderBy:'name'" signal="item" class="row database-item"></article>
+
+</div>
+{/block}
+
+
+{block head}
+
+{/block}
+
+{block script}
+
+{/block}
+
+{block leftBarContent}
+    <h2 class="search-title">Klíčová slova</h2>
+
+    <ul class="keywords-list">
+        <li n:foreach="$keywords as $key => $item">
+            <span class="label secondary round"><input type="checkbox" value="{$key}" id="keywords-{$key}" ng-model="search.keywords[{$key}]" {if $selected == $item}ng-init="search.keywords[{$key}] = true"{/if}><label for="keywords-{$key}">{$item}</label></span>
+        </li>
+    </ul>
+
+    <div class="divider"></div>
+
+{/block}

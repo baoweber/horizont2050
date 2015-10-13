@@ -31,6 +31,10 @@ app.controller("signalListCtrl", function($scope, $http) {
             return false;
         }
 
+        if ( !_self.filterMoreInArray($scope.search.keywords, item.keywords) ) {
+            return false;
+        }
+
         return true;
     };
 
