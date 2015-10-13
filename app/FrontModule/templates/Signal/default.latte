@@ -35,26 +35,27 @@
                 <div class="row signal-attributes">
                     <div class="small-12 medium-6 columns">
                         <strong>Dopad signálu:</strong> &nbsp;&nbsp;
-                        {$impacts[$signal->impacts_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
+                        {$impacts[$signal->impacts_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title="{include #impact}"></i>
                     </div>
                     <div class="small-12 medium-6 columns">
                         <strong>Rozsah:</strong> &nbsp;&nbsp;
-                        {$scales[$signal->scales_id]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
+                        {$scales[$signal->scales_id]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title="{include #scale}"></i>
                     </div>
                     <div class="small-12 medium-6 columns">
                         <strong>Relevance:</strong> &nbsp;&nbsp;
-                        {$relevanceArr[$signal->relevance]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
+                        {$relevanceArr[$signal->relevance]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title="{include #relevance}"></i>
                     </div>
                     <div class="small-12 medium-6 columns">
-                        <strong>Typ události:</strong> &nbsp;&nbsp;
-                        {$event_types[$signal->event_types_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
+                        <strong>Původce signálu:</strong> &nbsp;&nbsp;
+                        {$event_types[$signal->event_types_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title="{include  event_type}"></i>
                     </div>
                     <div class="small-12 medium-12 columns">
                         <strong>Časový horizont:</strong> &nbsp;&nbsp;
-                        {$timeframe[$signal->timeframe]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title=""></i>
+                        {$timeframe[$signal->timeframe]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title="{include #timeframe}"></i>
                     </div>
                     <div class="small-12 medium-12 columns">
                         <strong>Tematické oblasti:</strong> &nbsp;&nbsp;
+                        <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title="{include #challenges}"></i>
                         <ul>
                             <li n:foreach="$challenges as $challenge">
                                 {*<a href="#">*}{$challenge->name}{*</a>*}
@@ -63,7 +64,7 @@
                     </div>
 
                     <div class="small-12 medium-12 columns" n:if="count($strategies)">
-                        <strong>Souvislost s národními strategickými dokumenty: <i class="fa fa-question-circle" style="color: #706F6F;"></i></strong>
+                        <strong>Souvislost s národními strategickými dokumenty: <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" style="color: #706F6F;" title="{include #strategies}"></i></strong>
                         <ul>
                             <li n:foreach="$strategies as $strategy">
                                 <a style="color: rgb(34,34,34)"href="{$strategy->url}">{$strategy->name}</a>
@@ -318,4 +319,89 @@
 
 {/block}
 
+{block impact}
+    Charakter dopadu signálu z pohledu kvality života a kvality životního prostředí v ČR
+
+    <ul style='margin-top: 1em;'>
+        <li>Nežádoucí – signál má převažující negativní dopady</li>
+        <li>Žádoucí – signál má převažující pozitivní dopady</li>
+        <li>Ambivalentní  - signál má významné pozitivní i negativní dopady</li>
+        <li>Nejisté – není možné určit, zda dopad signálu bude negativní nebo pozitivní</li>
+    </ul>
+{/block}
+
+{block scale}
+    Geografický rozsah dopadu signálu.
+
+    <ul style='margin-top: 1em;'>
+        <li>Globální</li>
+        <li>Evropský</li>
+        <li>ČR</li>
+        <li>Lokální</li>
+    </ul>
+{/block}
+
+
+{block relevance}
+    Kombinace míry pravděpodobnosti a závažnosti dopadu signálu do r. 2050.
+
+    <ul style='margin-top: 1em;'>
+        <li>Nízká </li>
+        <li>Střední  </li>
+        <li>Vysoká </li>
+    </ul>
+{/block}
+
+{block signal_type}
+    Typ zaznamenaného signálu z pohledu jeho rozsahu, významnosti a/nebo doby projevu.
+
+    <ul style='margin-top: 1em;'>
+        <li>Divoká karta - nelinearita ve vývoji s malou pravděpodobností vzniku a velkým dopadem. Příkladem může být protržení velké údolní nádrže v ČR</li>
+        <li>Slabý signál – náznaky počínajícího trendu, který může v budoucnu změnit na trend, nebo odezní a neprojeví se. Příkladem může být  entofágie – hmyz jako potrava ČR.</li>
+        <li>Trend – měřitelný jev či tendence, která se v čase vyvíjí určitým směrem. Příkladem může být pokles počtu včelstev v Evropě.</li>
+        <li>Megatrend  -  megatrend je složený komplexní jev, který se formuje až několik dekád. Jakmile se zformuje, jedná se v podstatě o novou skutečnost, která ovlivňuje celou řadu činností, procesů a vnímání. Jsou to podkladové síly, které řídí trendy. Příkladem může být změna klimatu.</li>
+    </ul>
+{/block}
+
+{block timeframe}
+    V jakém časovém období se dopady signálu výrazněji projeví.
+
+    <ul style='margin-top: 1em;'>
+        <li>Kdykoli</li>
+        <li>Krátkodobý (do r. 2020)</li>
+        <li>Střednědobý (do r. 2030)</li>
+        <li>Dlouhodobý (do r. 2050)</li>
+    </ul>
+{/block}
+
+{block challenges}
+    Oblasti, ke kterým se signál vztahuje.
+
+    <ul style='margin-top: 1em;'>
+        <li>Klima, přírodní prostředí a biodiverzita</li>
+        <li>Přírodní zdroje a nakládání s odpady</li>
+        <li>Produkce a spotřeba energie</li>
+        <li>Zemědělství a potraviny</li>
+        <li>Spotřebitelské chování a životní styl</li>
+        <li>Zdraví a kvalita života</li>
+        <li>Věda, technologie a inovace</li>
+        <li>Demografie, urbanizace a využití území</li>
+        <li>Společnost, politika, globalizace a bezpečnost</li>
+    </ul>
+{/block}
+
+
+{block event_type}
+    Typ původce signálu.
+
+    <ul style='margin-top: 1em;'>
+        <li>Přírodní událost</li>
+        <li>Společenská změna</li>
+        <li>Technologická změna</li>
+    </ul>
+{/block}
+
+{block strategies}
+    Seznam národních strategických dokumentů, které mají vztah k signálu nebo jeho projevům.
+{/block}
 

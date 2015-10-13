@@ -67,7 +67,10 @@ class HomepagePresenter extends FrontPresenter
         $this['topMenu']->setActive('uvodni-strana');
         $news = $this->news->getHotNews(5);
 
-        $keywods = $this->keywords->getAllCount();
+        $keywods = $this->keywords->getAllCount([
+            'limit' => 30,
+            'orderby' => 'RAND()'
+        ]);
 
         $max = 0;
         $min = 10000000;
