@@ -37,6 +37,10 @@ class TopMenu extends \Nette\Application\UI\Control
             ),
         );
 
+        $linksRight['Keywords'] = array(
+            'link' => $this->presenter->link('Keywords:'),
+            'text' => 'klíčová slova'
+        );
 
         $linksRight['Settings'] = array(
             'link' => $this->presenter->link('Settings:'),
