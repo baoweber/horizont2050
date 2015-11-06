@@ -34,6 +34,10 @@
 
                 <div class="row signal-attributes">
                     <div class="small-12 medium-6 columns">
+                        <strong>Typ signálu:</strong> &nbsp;&nbsp;
+                        {$categories[$signal->categories_id]}
+                    </div>
+                    <div class="small-12 medium-6 columns">
                         <strong>Dopad signálu:</strong> &nbsp;&nbsp;
                         {$impacts[$signal->impacts_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title="{include #impact}"></i>
                     </div>
@@ -49,7 +53,7 @@
                         <strong>Původce signálu:</strong> &nbsp;&nbsp;
                         {$event_types[$signal->event_types_id]} <i class="fa fa-question-circle has-tip" data-tooltip style="color: #706F6F;" aria-haspopup="true" title="{include  event_type}"></i>
                     </div>
-                    <div class="small-12 medium-12 columns">
+                    <div class="small-12 medium-6 columns">
                         <strong>Časový horizont:</strong> &nbsp;&nbsp;
                         {$timeframe[$signal->timeframe]} <i class="fa fa-question-circle has-tip " data-tooltip style="color: #706F6F;" aria-haspopup="true" title="{include #timeframe}"></i>
                     </div>

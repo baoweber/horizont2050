@@ -40,7 +40,7 @@ class SignalPresenter extends FrontPresenter
 
     private $impacts, $scales;
 
-    private $sourcesIds, $sourcesTexts, $timeframe;
+    private $sourcesIds, $sourcesTexts, $timeframe, $categories;
 
     protected function startup()
     {
@@ -66,6 +66,14 @@ class SignalPresenter extends FrontPresenter
             5 => 'Nezobrazovat'
         );
 
+        $this->categories = array(
+            1 => 'Divoká karta',
+            2 => 'Slabý signál',
+            3 => 'Trend',
+            4 => 'Megatrend',
+            5 => 'Metatrend'
+        );
+
         $this->scales = array(
             1 => 'Globální',
             2 => 'Evropský',
@@ -85,6 +93,7 @@ class SignalPresenter extends FrontPresenter
         $this->template->impacts = $this->impacts;
         $this->template->scales = $this->scales;
         $this->template->timeframe = $this->timeframe;
+        $this->template->categories= $this->categories;
 
     }
 
