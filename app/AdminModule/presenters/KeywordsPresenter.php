@@ -42,7 +42,9 @@ class KeywordsPresenter extends AdminPresenter
     public function renderDefault()
     {
         // getting data
-        $keywords = $this->keywords->getAll();
+        $keywords = $this->keywords->getAll([
+            'orderby' => 'label'
+        ]);
 
         // debug
         Debugger::barDump($keywords, "Keywords");
