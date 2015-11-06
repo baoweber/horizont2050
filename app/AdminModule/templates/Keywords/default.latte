@@ -32,7 +32,7 @@
                 <tr>
                     <th>Název</th>
                     <th>Poslední úprava</th>
-                    {*<th n:if="$user->isAllowed('Admin:EventTypes', 'update')"></th>*}
+                    <th n:if="$user->isAllowed('Admin:EventTypes', 'update')"></th>
                     <th n:if="$user->isAllowed('Admin:EventTypes', 'delete')"></th>
                 </tr>
                 </thead>
@@ -41,13 +41,11 @@
                     <tr>
                         <td>{$item->label} </td>
                         <td class="column-grey">{$item->updated|date:"d.m.Y"}</td>
-                        {*
-                        <td class="manage-icons" n:if="$user->isAllowed('Admin:Spaces', 'update')">
+                        <td class="manage-icons" {*}n:if="$user->isAllowed('Admin:Spaces', 'update')"*}>
                             <a n:href="update $item->id">
-                                <i class="foundicon-edit tip-left" data-tooltip title="upravit oblast"></i>
+                                <i class="foundicon-edit tip-left" data-tooltip title="upravit klíčové slovo"></i>
                             </a>
                         </td>
-                        *}
                         <td class="manage-icons" {*n:if="$user->isAllowed('Admin:Keywords', 'delete')"*}>
                             <a n:href="delete $item->id">
                                 <i class="foundicon-remove tip-right" data-tooltip title="smazat klíčové slovo "></i>

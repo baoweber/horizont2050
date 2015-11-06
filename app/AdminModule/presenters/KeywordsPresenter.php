@@ -16,7 +16,7 @@ use Nette\Utils\Html;
 class KeywordsPresenter extends AdminPresenter
 {
 
-    /** @var \App\Models\Settings */
+    /** @var \App\Models\Keywords */
     private $keywords;
 
     /**
@@ -73,61 +73,87 @@ class KeywordsPresenter extends AdminPresenter
         $this->redirect('default');
     }
 
+    /**
+     * Renders update form
+     *
+     * @param int $id
+     */
+    public function actionUpdate($id)
+    {
+
+        //if ($this->user->isAllowed($this->name, $this->action)) {
+
+            if (isset($id) && $id) {
+
+                // gettin value for the item
+                $data = $this->keywords->getSingle($id);
+
+
+                // assignig data and submit caption
+                $form = $this['editForm'];
+                $form->setDefaults($data);
+                $form['submit']->caption = 'upravit';
+
+            } else {
+                $this->flashMessage('Invalid data passed.', 'alert');
+                $this->redirect('default');
+            }
+        //} else {
+        //    $this->flashMessage('You dont have access to this action.', 'alert');
+        //    $this->redirect('default');
+        //}
+
+        $this->setView('form');
+
+    }
+
     /* ----- Actions ---------------------------------------------------------------- */
 
 
     /* ----- Components ------------------------------------------------------------- */
 
-    /*
     /**
      * Generates the update form
      *
      * @return \VerticalForm
      */
-    /*
-    protected function createComponentSettingsForm() {
+    protected function createComponentEditForm() {
 
         $form = new \VerticalForm;
 
-        $form->addText('EUR', 'Počet položek na stránku.')
-            ->getControlPrototype()
-                ->class('smaller-width');
+        $form->addText('label', 'Klíčové slovo');
 
-        $form->addSubmit('submit', 'uložit nastavení')
+        $form->addHidden('id');
+
+        $form->addSubmit('submit', 'uložit úpravu')
             ->getControlPrototype()
                 ->class("small secondary");
 
         // callback method on success
-        $form->onSuccess[] = callback($this, "processSettingsForm");
+        $form->onSuccess[] = callback($this, "processEditForm");
 
         // returining form
         return $form;
 
     }
-    */
+
 
     /**
      * Handles the output of the form component
      *
      * @param Form $form
      */
-    /*
-    public function processSettingsForm(Form $form) {
+    public function processEditForm(Form $form) {
 
         // getting values
         $values = $form->form->getValues();
 
-        // adjusting values
-
-        foreach($values as $key =>  $value) {
-            $this->keywords->saveValue($key, $value);
-        }
+        $this->keywords->update($values->id, $values, $this->user->id);
 
         // flash message
-        $this->flashMessage('Setting values were updated.', 'success');
+        $this->flashMessage('Klíčové slovo upraveno.', 'success');
 
         // redirecting
         $this->redirect('default');
     }
-    */
 }
