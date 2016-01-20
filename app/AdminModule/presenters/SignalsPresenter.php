@@ -427,7 +427,7 @@ class SignalsPresenter extends AdminPresenter
         // adding input id
         $form->addHidden('id'); // (toto pridat)
 
-        $form->addSelect('categories_id', 'Kategorie',
+        $form->addSelect('categories_id', 'Typ signálu:',
             array(
                 1 => 'divoká karta',
                 2 => 'slabý signál',
