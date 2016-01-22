@@ -46,7 +46,7 @@ class HomepagePresenter extends FrontPresenter
         $page = $this->pages->getSingleBySlug('uvodni-strana');
 
         $signals = $this->signals->getAll([
-            'limit' => 4,
+            'limit' => 8,
             'orderby' => 'RAND()',
             'where' => [
                 'public' => 1
