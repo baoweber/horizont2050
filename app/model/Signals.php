@@ -83,6 +83,8 @@ class Signals extends \DivineModel
             $query[] = array('public%i' => 1);
         }
 
+        $query[] = "ORDER BY RAND()";
+
         $output = $this->db->fetchAll($query);
 
         // dding acknowledgements to each item
