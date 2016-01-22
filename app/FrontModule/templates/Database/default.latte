@@ -3,7 +3,7 @@
 {block content}
 <div class="small-12 medium-9 medium-push-3 large-push-3 columns main-database-list" id="main" n:syntax="off">
 
-    <article signal-list-item ng-repeat="item in signals | filter: advSearch | orderBy:'name'" signal="item" class="row database-item"></article>
+    <article signal-list-item ng-repeat="item in signals | filter: advSearch" signal="item" class="row database-item"></article>
 
 </div>
 {/block}
